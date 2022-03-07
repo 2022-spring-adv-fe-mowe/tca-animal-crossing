@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import aclogo from './acnh logo.png';
 import Button from '@mui/material/Button';
+import addData from './AddData';
 
 
 function App() {
@@ -12,11 +13,14 @@ function App() {
     
         <Button 
           variant="contained"
-          onClick={() => {
-            alert('clicked');
-          }}
+          onClick={addData}
         >
-          Add or View Data
+          Add Data
+        </Button>
+        <Button 
+          variant="contained"
+        >
+          View Data
         </Button>
         <Button variant="contained" >
           View Stats
