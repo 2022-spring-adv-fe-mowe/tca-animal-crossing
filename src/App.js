@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import aclogo from './acnh logo.png';
+import Button from '@mui/material/Button';
+
 
 function App() {
   return (
@@ -8,12 +10,17 @@ function App() {
       <header className="App-header">
         <img src={aclogo} className="ac-logo" alt="ac-logo" />
     
-        <button className="buttonMain">
+        <Button 
+          variant="contained"
+          onClick={() => {
+            alert('clicked');
+          }}
+        >
           Add or View Data
-        </button>
-        <button className="buttonMain" >
+        </Button>
+        <Button variant="contained" >
           View Stats
-        </button>
+        </Button>
       </header>
     </div>
   );
