@@ -18,7 +18,7 @@ export const Home = () => {
 					variant="contained"
 					onClick={() => nav("/AddData")}
 				>
-					Add Data
+					Add Interaction
 				</Button>
 
 				<Button 

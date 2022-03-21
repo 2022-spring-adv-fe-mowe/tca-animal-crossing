@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  width: 30%;
   display: block;
   margin: auto;
 }
@@ -29,7 +28,7 @@
   font-weight: bolder;
   padding: .5em;
   margin: 1em;
-  width: 50%;
+  width: 60%;
   cursor: pointer;
 }
 
