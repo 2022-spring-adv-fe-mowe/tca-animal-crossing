@@ -3,8 +3,6 @@ import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { Button } from '@mui/material/Button';
-
 import { AddData } from './AddData';
 import { Home } from './Home';
 import { Stats } from './Stats';

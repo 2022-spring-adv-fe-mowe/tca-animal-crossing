@@ -30,6 +30,7 @@
   padding: .5em;
   margin: 1em;
   width: 50%;
+  cursor: pointer;
 }
 
 .ac-logo {
