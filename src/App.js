@@ -9,7 +9,6 @@ import { Button } from '@mui/material/Button';
 
 import { AddData } from './AddData';
 import { Home } from './Home';
-import { Main } from './Main';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
@@ -20,7 +19,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="main" element={<Main />} />
         <Route path="stats" element={<Stats />} />
         <Route path="adddata" element={<AddData/>} />
         <Route path="addvillager" element={<AddVillager/>} />
