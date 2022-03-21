@@ -2,8 +2,6 @@ import { logo } from './logo.svg';
 import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
-import { func } from 'prop-types';
-import { Fragment } from 'react';
 
 import { Button } from '@mui/material/Button';
 
@@ -28,33 +26,3 @@ function App() {
 };
 
 export default App;
-
-
-/* function App() {
-  return (
-    <>
-      <div className="App">
-      <header className="App-header">
-        <img src={aclogo} className="ac-logo" alt="ac-logo" />
-
-        <Button 
-          variant="contained"
-          onClick={AddData}
-        >
-          Add Data
-        </Button>
-        <Button 
-          variant="contained"
-        >
-          View Data
-        </Button>
-        <Button variant="contained" >
-          View Stats
-        </Button>
-      </header>
-      </div>
-    </>
-  );
-}
-export default App;
- */

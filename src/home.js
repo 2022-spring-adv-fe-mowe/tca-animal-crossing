@@ -4,30 +4,32 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
 
-		// const nav = useNavigate();
+	const nav = useNavigate();
 
-    return (
+	return(
 			<>
-				<Button 
-					variant="contained"
-					// onClick={() => nav("/AddData")}
-				>
+			<h2>Home</h2>
+
+			<Button 
+				variant="contained"
+ 				onClick={() => nav("/AddData")}
+			>
 				Add Data
-				</Button>
-				
-				<Button 
-					variant="contained"
-					// onClick={() => nav("/AddVillager")}
-				>
+			</Button>
+
+			<Button 
+				variant="contained"
+				onClick={() => nav("/AddVillager")}
+			>
 				Add Villager
-				</Button>
-				
-				<Button 
-					variant="contained" 
-					// onClick={() => nav("/Stats")}
-				>
+			</Button>
+
+			<Button 
+				variant="contained" 
+				onClick={() => nav("/Stats")}
+			>
 				View Stats
-				</Button>
-			</>
+			</Button>
+		</>
   );
 };
