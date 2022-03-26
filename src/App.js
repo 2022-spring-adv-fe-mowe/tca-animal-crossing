@@ -3,80 +3,105 @@ import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { AddData } from './AddData';
+import { Play } from './Play';
 import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
+const villagers = [
+  {
+    name: "Ione",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Rodney",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Baabara",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Stinky",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Shino",
+    picture: false, 
+    active: true
+  },
+  {
+    name: "Walker",
+    picture: false, 
+    active: true
+  },
+  {
+    name: "Marlo",
+    picture: false, 
+    active: true
+  },
+  {
+    name: "Marshal",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Octavian",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Skye",
+    picture: true, 
+    active: true
+  },
+  {
+    name: "Gruff",
+    picture: true,
+    active: false
+  },
+]
 
+const interactions = [
+  {
+    villager: "Shino",
+    date: "2022-02-26",
+    interaction: 
+      "GIR"
+  },
+  {
+    villager: "Octavian",
+    date: "2022-02-26",
+    interaction: "GIR"
+  }
+]
+
+const activeVillagers = villagers.filter(x => x.active === true);
+const activeVillagerList = activeVillagers.map(x => x.name);
+const archivedVillagers = villagers.filter(x => x.active === false);
+const archivedVillagerList = archivedVillagers.map(x => x.name);
+
+console.log(activeVillagerList);
+console.log(archivedVillagerList);
+
+const villagersWithoutPicture = villagers.filter(x => x.picture === false);
+const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
+
+console.log(villagersWithoutPictureList);
+
+ 
 function App() {
-  
-  const Villagers = [
-    {
-      name: "Ione",
-      picture: true
-    },
-    {
-      name: "Rodney",
-      picture: true
-    },
-    {
-      name: "Baabara",
-      picture: true
-    },
-    {
-      name: "Stinky",
-      picture: true
-    },
-    {
-      name: "Shino",
-      picture: false
-    },
-    {
-      name: "Walker",
-      picture: false
-    },
-    {
-      name: "Marlo",
-      picture: false
-    },
-    {
-      name: "Marshal",
-      picture: true
-    },
-    {
-      name: "Octavian",
-      picture: true
-    },
-    {
-      name: "Skye",
-      picture: true
-    },
-  ]
-
-  const Interactions = [
-    {
-      villager: "Shino",
-      date: "2022-02-26",
-      interactions: [
-        "chat", "chat", "gift-GIR"
-      ]
-    },
-    {
-      villager: "Octavian",
-      date: "2022-02-26",
-      interactions: [
-        "chat", "chat"
-      ]
-    }
-  ]
 
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="stats" element={<Stats />} />
-        <Route path="adddata" element={<AddData/>} />
+        <Route path="play" element={<Play/>} />
         <Route path="addvillager" element={<AddVillager/>} />
       </Routes>
     </div>

@@ -6,7 +6,7 @@ import { useSelect } from '@mui/base/SelectUnstyled';
 import React from "react";
 
 
-export const AddData = () => {
+export const Play = () => {
 	const current = new Date();
 	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 

@@ -16,9 +16,9 @@ export const Home = () => {
 				<Button 
 					class="buttonMain"
 					variant="contained"
-					onClick={() => nav("/AddData")}
+					onClick={() => nav("/Play")}
 				>
-					Add Interaction
+					Play
 				</Button>
 
 				<Button 
