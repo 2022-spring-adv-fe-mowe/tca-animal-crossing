@@ -13,8 +13,8 @@ export const Stats = () => {
 						<TableCell>Last Interaction Date</TableCell>
 						<TableCell>Last Gift Date</TableCell>
 						<TableCell>Picture?</TableCell>
-						<TableCell>Avg. Weekly Chats</TableCell>
 						<TableCell>Avg. Weekly Gifts</TableCell>
+						<TableCell>Total Number of Gifts</TableCell>
 					</TableRow>
 				</TableHead>
 			</Table>
