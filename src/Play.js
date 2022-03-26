@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select, FormGroup, Checkbox, FormControlLabel, RadioGroup, FormLabel, Radio, Button } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, FormGroup, Checkbox, FormControlLabel, RadioGroup, FormLabel, Radio, Button, createTheme } from "@mui/material";
 import { spacing, positions } from "@mui/system";
 import RadioGroupContext from "@mui/material/RadioGroup/RadioGroupContext";
 import { useSelect } from '@mui/base/SelectUnstyled';
@@ -9,9 +9,10 @@ import React from "react";
 export const Play = ({villagers}) => {
 	const current = new Date();
 	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
-
+	
 	return(
 		<>
+			
 			<h1>Gifting</h1>
 			<h2> {date} </h2>
 			{villagers.map(x => 
@@ -46,7 +47,7 @@ export const Play = ({villagers}) => {
 			color="success"
 			size="large"
 		>
-			End Game
+			Submit
 		</Button>
 		</>
 	);
