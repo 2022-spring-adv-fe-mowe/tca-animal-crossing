@@ -6,48 +6,69 @@ import { useSelect } from '@mui/base/SelectUnstyled';
 import React from "react";
 
 
-export const Play = () => {
+export const Play = ({villagers}) => {
 	const current = new Date();
 	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
 	return(
 		<>
-
 			<h1>Gifting</h1>
 			<h2> {date} </h2>
-			<FormControl>
-				<FormLabel id="gift-type-group-label">Villager 1</FormLabel> 
-				<RadioGroup
-					row
-					aria-labelledby="gift-type-group-label"
-					defaultValue="none"
-					name="radio-buttons-group"
-				>
-					<FormControlLabel value="none" control={<Radio />} label="None"/>
-					<FormControlLabel value="GIR" control={<Radio />} label="Gift w/ Gift in Return"/>
-					<FormControlLabel value="No-GIR" control={<Radio />} label="Gift w/ No Gift in Return"/>
-					<FormControlLabel value="PIR" control={<Radio />} label="Gift w/ Picture in Return"/>
-				</RadioGroup>
-			</FormControl>
-		<p></p>
-		<FormGroup>
-			<Select defaultValue={["none"]}>
-				<MenuItem value={"none"}>None</MenuItem>
-				<MenuItem value={"GIR"}>Gift–Gift in Return</MenuItem>
-				<MenuItem value={"NIR"}>Gift-No Gift in Return</MenuItem>
-				<MenuItem value={"PIR"}>Gift-Picture in Return</MenuItem>
-			</Select>
-		</FormGroup>
-		
-
-				<p></p>
+			{villagers.map(x => 
+				<FormControl>
+					<FormLabel>{x}</FormLabel>
+					<RadioGroup>
+						<FormControlLabel 
+							value="GIR"
+							control={<Radio />}
+							label="Gift with gift in return"
+						/>
+						<FormControlLabel 
+							value="NIR"
+							control={<Radio />}
+							label="Gift with no gift in return"
+						/>
+						<FormControlLabel 
+						value="PIR"
+						control={<Radio />}
+						label="Gift with villager photo in return"
+						/>
+						<FormControlLabel 
+						value="na"
+						control={<Radio />}
+						label="Unable to gift villager"
+						/>
+					</RadioGroup>
+				</FormControl>				
+			)}
 		<Button
 			variant="contained"
 			color="success"
 			size="large"
 		>
-			Submit
+			End Game
 		</Button>
 		</>
 	);
 };
+
+
+{/* <FormGroup>
+					<h3>{x}</h3>
+					<FormControlLabel
+						label="Gift w/ no gift in return"
+						control={<Checkbox />} 
+					/>
+					<FormControlLabel
+						label="Gift w/ gift in return"
+						control={<Checkbox />} 
+					/>
+					<FormControlLabel
+						label="Gift w/ picture in return"
+						control={<Checkbox />} 
+					/>
+						<FormControlLabel
+						label="Unable to gift villager"
+						control={<Checkbox />} 
+					/>
+				</FormGroup> */}

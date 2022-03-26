@@ -101,7 +101,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="stats" element={<Stats />} />
-        <Route path="play" element={<Play/>} />
+        <Route path="play" element={
+          <Play
+            villagers = {activeVillagerList}
+          />
+        } />
         <Route path="addvillager" element={<AddVillager/>} />
       </Routes>
     </div>
