@@ -94,7 +94,7 @@ const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 console.log(villagersWithoutPictureList);
 
  
-function App() {
+const App = () => {
 
   return (
     <div className="App">
