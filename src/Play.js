@@ -7,13 +7,16 @@ import Button from "@mui/material/Button";
 import React from "react";
 
 export const Play = ({villagers}) => {
-	const current = new Date();
-	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
+	const currentDate = new Date();
+	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
-	/* const handleChange = (e) => {
-		setGiftExchange(e.target.value);
-	}; */
-	
+	villagers.sort();
+	const [giftExchange, setGiftExchange] = React.useState('');
+
+	const handleChange = (event) => {
+		setGiftExchange(event.target.value);
+	};
+
 	return(
 		<>
 			
@@ -21,14 +24,14 @@ export const Play = ({villagers}) => {
 			<h2> {date} </h2>
 
 			{villagers.map(x => 
-				<FormControl sx={{ m: 1, minWidth: 120 }}>
+				<FormControl sx={{ m: 1, minWidth: 340 }}>
 					<InputLabel>{x}</InputLabel>
 					<Select
 						labelId="gift-exchange-label"
 						id="gift-exchange"
-						value={x}
-						label={x}
-						// onChange={handleChange}
+						value={giftExchange}
+						label="Gift Exchange"
+						onChange={handleChange}
 					>
 						<MenuItem value="GIR">
 							Gift with gift in return
@@ -45,10 +48,12 @@ export const Play = ({villagers}) => {
 					</Select>
 				</FormControl>				
 			)}
+			<br />
 		<Button
 			variant="contained"
 			color="success"
 			size="large"
+			onClick={setGiftExchange}
 		>
 			Submit
 		</Button>
