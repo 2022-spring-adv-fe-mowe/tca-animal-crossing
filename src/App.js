@@ -104,9 +104,14 @@ const App = () => {
         <Route path="play" element={
           <Play
             villagers = {activeVillagerList}
+            picturesNeeded = {villagersWithoutPictureList}
           />
         } />
-        <Route path="addvillager" element={<AddVillager/>} />
+        <Route path="addvillager" element={
+          <AddVillager
+            villagers = {activeVillagerList}
+          />
+        } />
       </Routes>
     </div>
   );
