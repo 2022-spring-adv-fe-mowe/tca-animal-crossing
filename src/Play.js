@@ -5,33 +5,42 @@ import Select  from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
 import React from "react";
+import { useState } from "react";
 
 export const Play = ({villagers}) => {
+	
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
 	villagers.sort();
+	
 	const [giftExchange, setGiftExchange] = React.useState('');
 
-	const handleChange = (event) => {
-		setGiftExchange(event.target.value);
+	const handleChange = e => {
+		setGiftExchange(e.target.value)
+	};
+
+	const handleClick = e => {
+		setGiftExchange(e.target.value)
 	};
 
 	return(
 		<>
-			
 			<h1>Gift Exchange</h1>
 			<h2> {date} </h2>
 
 			{villagers.map(x => 
-				<FormControl sx={{ m: 1, minWidth: 340 }}>
+				<FormControl 
+					sx={{ m: 1, minWidth: 340 }}
+				>
 					<InputLabel>{x}</InputLabel>
 					<Select
 						labelId="gift-exchange-label"
 						id="gift-exchange"
-						value={giftExchange}
+						value={giftExchange}		
 						label="Gift Exchange"
 						onChange={handleChange}
+						key={x}
 					>
 						<MenuItem value="GIR">
 							Gift with gift in return
@@ -53,7 +62,7 @@ export const Play = ({villagers}) => {
 			variant="contained"
 			color="success"
 			size="large"
-			onClick={setGiftExchange}
+			onClick={handleClick}
 		>
 			Submit
 		</Button>
