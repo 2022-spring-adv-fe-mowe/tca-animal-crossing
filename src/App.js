@@ -1,5 +1,6 @@
 import { logo } from './logo.svg';
 import './App.css';
+import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -92,6 +93,14 @@ const villagersWithoutPicture = villagers.filter(x => x.picture === false);
 const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 console.log(villagersWithoutPictureList);
+
+/* const addGiftExchange = async (giftExchange) => {
+
+  const newGiftExchange = [
+    ...giftExchanges,
+    giftExchange
+  ];
+} */
 
  
 const App = () => {
