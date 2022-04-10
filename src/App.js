@@ -4,6 +4,8 @@ import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
+import { useState, useEffect } from 'react';
+
 import { Play } from './Play';
 import { Home } from './Home';
 import { Stats } from './Stats';
@@ -43,7 +45,7 @@ const villagers = [
   {
     name: "Marlo",
     picture: false, 
-    active: true
+    active: false
   },
   {
     name: "Marshal",
@@ -81,29 +83,47 @@ const interactions = [
   }
 ]
 
+//Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
 const activeVillagerList = activeVillagers.map(x => x.name);
+
+console.log(activeVillagerList);
+
+// Create a list of archived villagers (for stats purposes)
 const archivedVillagers = villagers.filter(x => x.active === false);
 const archivedVillagerList = archivedVillagers.map(x => x.name);
 
-console.log(activeVillagerList);
 console.log(archivedVillagerList);
 
+
+//Determine which villagers have yet to provide their photo
 const villagersWithoutPicture = villagers.filter(x => x.picture === false);
 const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 console.log(villagersWithoutPictureList);
 
-/* const addGiftExchange = async (giftExchange) => {
-
-  const newGiftExchange = [
-    ...giftExchanges,
-    giftExchange
-  ];
-} */
-
- 
 const App = () => {
+
+  //Use state to note gift exchange type on play screen
+  const [newGiftExchange, setNewGiftExchange] = React.useState({
+    villagers:[],
+    newGiftExchange: ""
+  });
+
+  //Use state to save results
+  const [giftExchange, setGiftExchange] = React.useState([])
+
+  const addGiftExchange = async (giftExchange) => {
+    
+    const newGiftExchanges = [
+      ...giftExchange,
+      ...villager,
+    ];
+
+    setGiftExchange(newGiftExchanges);
+
+    await localforage.setItem("giftExchanges", newGiftExchanges)
+  };
 
   return (
     <div className="App">
@@ -114,6 +134,8 @@ const App = () => {
           <Play
             villagers = {activeVillagerList}
             picturesNeeded = {villagersWithoutPictureList}
+
+            addGiftExchange={addGiftExchange}
           />
         } />
         <Route path="addvillager" element={
