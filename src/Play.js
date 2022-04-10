@@ -4,10 +4,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Select  from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
-import React from "react";
-import { useState } from "react";
+import localforage from 'localforage';
 
-export const Play = ({villagers, date, giftExchange}) => {
+import { Routes, Route } from 'react-router-dom';
+
+import { useState, useEffect } from 'react';
+import React from 'react';
+
+export const Play = ({villagers, giftExchange}) => {
 	
 	//generate today's date
 	const currentDate = new Date();
@@ -15,20 +19,33 @@ export const Play = ({villagers, date, giftExchange}) => {
 
 	//sort villagers alphabetically
 	villagers.sort();
-	
-	//sets the new gift exchange for user review
-	const handleChange = e => {
-		setNewGiftExchange(e.target.value)
-	};
 
-	const submitResults = (giftExchange) => {
+	//Use state to note gift exchange type on play screen
+
+  //sets the new gift exchange for user review
+	// const setNewGiftExchange = e => {
+	// 	newGiftExchange = (e.target.value)
+	// };
+  // const [newGiftExchange, setNewGiftExchange] = React.useState();
+
+  // //Use state to save results
+  // const [giftExchange, setGiftExchange] = React.useState([])
+
+  // const setGiftExchange = async (giftExchange) => {
+    
+  //   const newGiftExchanges = [
+  //     ...giftExchange,
+  //     ...villagers,
+  //   ];
+
+  //   setGiftExchange(newGiftExchanges);
+
+  //   await localforage.setItem("giftExchanges", newGiftExchanges)
+  // };
+	// const submitResults = () => {
 		
-		setGiftExchange([{
-			date: date,
-			villager: x,
-			giftExchange: newGiftExchange
-		}]);
-	};
+		
+	// };
 
 	return(
 		<>
@@ -43,9 +60,9 @@ export const Play = ({villagers, date, giftExchange}) => {
 					<Select
 						labelId="gift-exchange-label"
 						id="gift-exchange"
-						value={newGiftExchange}		
+						value={giftExchange}		
 						label="Gift Exchange"
-						onChange={handleChange}
+						// onChange={setNewGiftExchange}
 					>
 						<MenuItem value="GIR">
 							Gift with gift in return
@@ -67,55 +84,10 @@ export const Play = ({villagers, date, giftExchange}) => {
 			variant="contained"
 			color="success"
 			size="large"
-			onClick={() => submitResults(x, newGiftExchange)}
+			// onClick={submitResults(newGiftExchange)}
 		>
 			Submit
 		</Button>
 		</>
 	);
 };
-
-
-/* <FormGroup>
-					<h3>{x}</h3>
-					<FormControlLabel
-						label="Gift w/ no gift in return"
-						control={<Checkbox />} 
-					/>
-					<FormControlLabel
-						label="Gift w/ gift in return"
-						control={<Checkbox />} 
-					/>
-					<FormControlLabel
-						label="Gift w/ picture in return"
-						control={<Checkbox />} 
-					/>
-						<FormControlLabel
-						label="Unable to gift villager"
-						control={<Checkbox />} 
-					/>
-				</FormGroup> */
-
-/* <FormLabel>{x}</FormLabel>
-					<RadioGroup>
-						<FormControlLabel 
-							value="GIR"
-							control={<Radio />}
-							label="Gift with gift in return"
-						/>
-						<FormControlLabel 
-							value="NIR"
-							control={<Radio />}
-							label="Gift with no gift in return"
-						/>
-						<FormControlLabel 
-						value="PIR"
-						control={<Radio />}
-						label="Gift with villager photo in return"
-						/>
-						<FormControlLabel 
-						value="na"
-						control={<Radio />}
-						label="Unable to gift villager"
-						/>
-					</RadioGroup> */

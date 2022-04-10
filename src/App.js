@@ -5,6 +5,7 @@ import localforage from 'localforage';
 import { Routes, Route } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Play } from './Play';
 import { Home } from './Home';
@@ -104,26 +105,28 @@ console.log(villagersWithoutPictureList);
 
 const App = () => {
 
-  //Use state to note gift exchange type on play screen
-  const [newGiftExchange, setNewGiftExchange] = React.useState({
-    villagers:[],
-    newGiftExchange: ""
-  });
+  // //Use state to note gift exchange type on play screen
+  // const [newGiftExchange, setNewGiftExchange] = React.useState();
 
-  //Use state to save results
-  const [giftExchange, setGiftExchange] = React.useState([])
+  // //sets the new gift exchange for user review
+	// const setNewGiftExchange = e => {
+	// 	newGiftExchange = (e.target.value)
+	// };
 
-  const addGiftExchange = async (giftExchange) => {
+  // //Use state to save results
+  // const [giftExchange, setGiftExchange] = React.useState([])
+
+  // const addGiftExchange = async (giftExchange) => {
     
-    const newGiftExchanges = [
-      ...giftExchange,
-      ...villager,
-    ];
+  //   const newGiftExchanges = [
+  //     ...giftExchange,
+  //     ...villagers,
+  //   ];
 
-    setGiftExchange(newGiftExchanges);
+  //   setGiftExchange(newGiftExchanges);
 
-    await localforage.setItem("giftExchanges", newGiftExchanges)
-  };
+  //   await localforage.setItem("giftExchanges", newGiftExchanges)
+  // };
 
   return (
     <div className="App">
@@ -135,7 +138,7 @@ const App = () => {
             villagers = {activeVillagerList}
             picturesNeeded = {villagersWithoutPictureList}
 
-            addGiftExchange={addGiftExchange}
+            // addGiftExchange={addGiftExchange}
           />
         } />
         <Route path="addvillager" element={
