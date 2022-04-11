@@ -1,4 +1,3 @@
-import { logo } from './logo.svg';
 import './App.css';
 import localforage from 'localforage';
 
@@ -81,6 +80,10 @@ const interactions = [
     villager: "Octavian",
     date: "2022-02-26",
     interaction: "GIR"
+  },
+  { villager: "Skye",
+    date: "2022-04-01",
+    interaction: "na"
   }
 ]
 
@@ -104,6 +107,7 @@ const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 console.log(villagersWithoutPictureList);
 
 const App = () => {
+
 
   // //Use state to note gift exchange type on play screen
   // const [newGiftExchange, setNewGiftExchange] = React.useState();
@@ -137,8 +141,6 @@ const App = () => {
           <Play
             villagers = {activeVillagerList}
             picturesNeeded = {villagersWithoutPictureList}
-
-            // addGiftExchange={addGiftExchange}
           />
         } />
         <Route path="addvillager" element={
