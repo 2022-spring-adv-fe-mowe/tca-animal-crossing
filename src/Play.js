@@ -4,27 +4,29 @@ import MenuItem from "@mui/material/MenuItem";
 import Select  from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
-import localforage, { key } from 'localforage';
+import localforage from 'localforage';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 import React from 'react';
 
 export const Play = ({villagers}) => {
-	
-	//generate today's date
+
+	//Generate today's date
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
-	//sort villagers alphabetically
+	console.log(currentDate);
+
+	//Sort villagers alphabetically
 	villagers.sort();
 
-	//Use state to note gift exchange type on play screen
-  //sets the new gift exchange for user review
-	const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
+	//Use state to note gift exchange type on play screen 
+  const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
 		name: x,
-		giftExchange: ''
+		giftExchange: '',
+		date: date
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
@@ -36,20 +38,11 @@ export const Play = ({villagers}) => {
 		);
 	};
 
-  // const setGiftExchange = async (giftExchange) => {
-    
-  //   const newGiftExchanges = [
-  //     ...giftExchange,
-  //     ...villagers,
-  //   ];
-
-  //   setGiftExchange(newGiftExchanges);
-
-  //   await localforage.setItem("giftExchanges", newGiftExchanges)
-  // };
-
-	const submitResults = () => {
+	//After "Submit" button is entered, update villager data with new gift exchange interaction
+  const handleClick = () => {
 		const newResults = villagersGiftExchange.filter(x => x.giftExchange !== "");
+
+		//Send user to Stats page to view villager stats
 
 		console.log (newResults);
 	};
@@ -92,7 +85,7 @@ export const Play = ({villagers}) => {
 			variant="contained"
 			color="success"
 			size="large"
-			onClick={submitResults}
+			onClick={handleClick}
 		>
 			Submit
 		</Button>
