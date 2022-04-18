@@ -3,7 +3,7 @@ import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 import { Play } from './Play';
@@ -12,6 +12,7 @@ import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
 const villagers = [
+/////////////START HARDCODED DATA//////////////
   {
     name: "Ione",
     picture: true, 
@@ -67,6 +68,11 @@ const villagers = [
     picture: true,
     active: false
   },
+  {
+    name: "Cole",
+    picture: false,
+    active: true
+  },
 ]
 
 const interactions = [
@@ -81,11 +87,13 @@ const interactions = [
     date: "2022-02-26",
     interaction: "GIR"
   },
-  { villager: "Skye",
+  { 
+    villager: "Skye",
     date: "2022-04-01",
     interaction: "na"
   }
 ]
+/////////////END HARDCODED DATA//////////////
 
 //Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
@@ -105,8 +113,6 @@ const villagersWithoutPicture = villagers.filter(x => x.picture === false);
 const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 console.log(villagersWithoutPictureList);
-
-
 
 const App = () => {
 

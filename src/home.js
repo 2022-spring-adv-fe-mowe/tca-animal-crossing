@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+//import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import './App.css';
 import aclogo from './acnh logo.png';
@@ -10,32 +10,29 @@ export const Home = () => {
 
 	return(
 			<>
-			<div class="App-header">
-				<img src={aclogo} class="ac-logo" />
+			<div className="App-header">
+				<img src={aclogo} className="ac-logo" />
 
-				<Button 
-					class="buttonMain"
-					variant="contained"
+				<button 
+					className="buttonMain"
 					onClick={() => nav("/Play")}
 				>
 					Play
-				</Button>
+				</button>
 
-				<Button 
-					class="buttonMain"
-					variant="contained"
+				<button 
+					className="buttonMain"
 					onClick={() => nav("/AddVillager")}
 				>
 					Add Villager
-				</Button>
+				</button>
 
-				<Button 
-					class="buttonMain"
-					variant="contained" 
+				<button 
+					className="buttonMain"
 					onClick={() => nav("/Stats")}
 				>
 					View Stats
-				</Button>
+				</button>
 			</div>
 		</>
   );

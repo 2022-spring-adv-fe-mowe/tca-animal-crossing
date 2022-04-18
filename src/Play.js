@@ -4,20 +4,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Select  from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
+import './App.css';
+
 import localforage from 'localforage';
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
-export const Play = ({villagers}) => {
+export const Play = ({
+	villagers 
+}) => {
+
+	const nav = useNavigate();
 
 	//Generate today's date
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
-
-	console.log(currentDate);
 
 	//Sort villagers alphabetically
 	villagers.sort();
@@ -42,14 +46,18 @@ export const Play = ({villagers}) => {
   const handleClick = () => {
 		const newResults = villagersGiftExchange.filter(x => x.giftExchange !== "");
 
-		//Send user to Stats page to view villager stats
+			//Send user to Stats page to view villager stats
+			nav("/stats");
 
 		console.log (newResults);
+
+		//return newResults;
 	};
 
-	
+	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(
 		<>
+			<div >
 			<h1>Gift Exchange</h1>
 			<h2> {date} </h2>
 
@@ -81,7 +89,8 @@ export const Play = ({villagers}) => {
 				</FormControl>				
 			)}
 			<br />
-		<Button
+			<Button
+			
 			variant="contained"
 			color="success"
 			size="large"
@@ -89,6 +98,8 @@ export const Play = ({villagers}) => {
 		>
 			Submit
 		</Button>
+		
+		</div>
 		</>
 	);
 };
