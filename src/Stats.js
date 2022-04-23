@@ -1,24 +1,39 @@
-import { Table, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 
-export const Stats = () => {
+export const Stats = ({villagers}) => {
+
+	console.log(villagers);
+
 	return(
 		<>
-		<h2>Stats</h2>
+		<div className="stats">
+			<h2>Stats</h2>
 
-		<TableContainer>
-			<Table>
-				<TableHead>
-					<TableRow>
-						<TableCell>Villager</TableCell>
-						<TableCell>Last Interaction Date</TableCell>
-						<TableCell>Last Gift Date</TableCell>
-						<TableCell>Picture?</TableCell>
-						<TableCell>Avg. Weekly Gifts</TableCell>
-						<TableCell>Total Number of Gifts</TableCell>
-					</TableRow>
-				</TableHead>
-			</Table>
-		</TableContainer>
+			<TableContainer>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell>Villager Name</TableCell>
+							<TableCell>Last Gift Date</TableCell>
+							<TableCell>Last Gift Exchange Type</TableCell>
+							<TableCell>Picture</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{villagers.map(villager => 
+							<TableRow 
+									key={villager.name}
+							>
+								<TableCell>{villager.name}</TableCell>
+								<TableCell>{villager.lastGiftedDate}</TableCell>
+								<TableCell>{villager.lastGiftExchange}</TableCell>
+								<TableCell>{villager.picture}</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</div>
 		</>
 	);
 };

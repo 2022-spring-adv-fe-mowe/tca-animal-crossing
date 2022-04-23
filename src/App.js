@@ -16,32 +16,44 @@ const villagers = [
   {
     name: "Ione",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Rodney",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Baabara",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Stinky",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Shino",
     picture: false, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Walker",
     picture: false, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Marlo",
@@ -51,17 +63,23 @@ const villagers = [
   {
     name: "Marshal",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Octavian",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Skye",
     picture: true, 
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
   {
     name: "Gruff",
@@ -71,7 +89,9 @@ const villagers = [
   {
     name: "Cole",
     picture: false,
-    active: true
+    active: true,
+    latestGiftedDate: "",
+    latestGiftExchange: ""
   },
 ]
 
@@ -99,14 +119,11 @@ const interactions = [
 const activeVillagers = villagers.filter(x => x.active === true);
 const activeVillagerList = activeVillagers.map(x => x.name);
 
-console.log(activeVillagerList);
-
 // Create a list of archived villagers (for stats purposes)
 const archivedVillagers = villagers.filter(x => x.active === false);
 const archivedVillagerList = archivedVillagers.map(x => x.name);
 
 console.log(archivedVillagerList);
-
 
 //Determine which villagers have yet to provide their photo
 const villagersWithoutPicture = villagers.filter(x => x.picture === false);
@@ -116,35 +133,15 @@ console.log(villagersWithoutPictureList);
 
 const App = () => {
 
-
-  // //Use state to note gift exchange type on play screen
-  // const [newGiftExchange, setNewGiftExchange] = React.useState();
-
-  // //sets the new gift exchange for user review
-	// const setNewGiftExchange = e => {
-	// 	newGiftExchange = (e.target.value)
-	// };
-
-  // //Use state to save results
-  // const [giftExchange, setGiftExchange] = React.useState([])
-
-  // const addGiftExchange = async (giftExchange) => {
-    
-  //   const newGiftExchanges = [
-  //     ...giftExchange,
-  //     ...villagers,
-  //   ];
-
-  //   setGiftExchange(newGiftExchanges);
-
-  //   await localforage.setItem("giftExchanges", newGiftExchanges)
-  // };
-
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="stats" element={<Stats />} />
+        <Route path="stats" element={
+          <Stats 
+            villagers = {villagers}
+          />
+        } />
         <Route path="play" element={
           <Play
             villagers = {activeVillagerList}

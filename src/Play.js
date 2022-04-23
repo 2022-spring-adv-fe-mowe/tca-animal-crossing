@@ -30,7 +30,7 @@ export const Play = ({
   const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
 		name: x,
 		giftExchange: '',
-		date: date
+		latestGiftedDate: date
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
@@ -44,20 +44,26 @@ export const Play = ({
 
 	//After "Submit" button is entered, update villager data with new gift exchange interaction
   const handleClick = () => {
-		const newResults = villagersGiftExchange.filter(x => x.giftExchange !== "");
+		const newResults = villagersGiftExchange.filter(x => x.giftExchange !== "")
+		const forUpdate = newResults.map(y => ({
+			name: y.name,
+			latestGiftExchange: y.giftExchange,
+			latestGiftedDate: y.latestGiftedDate, 
+		}))
+		 
 
 			//Send user to Stats page to view villager stats
-			nav("/stats");
+			//nav("/stats");
 
-		console.log (newResults);
+		console.log (forUpdate);
 
-		//return newResults;
+		return forUpdate;
 	};
 
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(
 		<>
-			<div >
+			<div className="play">
 			<h1>Gift Exchange</h1>
 			<h2> {date} </h2>
 

@@ -20,12 +20,12 @@ export const Home = () => {
 					Play
 				</button>
 
-				<button 
+				{/* <button 
 					className="buttonMain"
 					onClick={() => nav("/AddVillager")}
 				>
 					Add Villager
-				</button>
+				</button> */}
 
 				<button 
 					className="buttonMain"

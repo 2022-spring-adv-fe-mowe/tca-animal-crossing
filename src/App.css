@@ -30,3 +30,21 @@
 .ac-logo {
   margin-bottom: 1em;
 }
+
+.play, .stats {
+  color: #80EFF0;
+  background-color: white;
+  padding: 2em;
+}
+
+.play button {
+  margin-top: 1em;
+  background-color: #80EFF0;
+  font-weight: bolder;
+}
+
+.play button:hover {
+  background-color: white;
+  color: #80EFF0;
+  border: .15em solid #80EFF0;
+}
