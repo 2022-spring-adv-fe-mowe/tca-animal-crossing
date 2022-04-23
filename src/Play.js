@@ -19,6 +19,7 @@ export const Play = ({
 
 	const nav = useNavigate();
 
+
 	//Generate today's date
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
@@ -57,7 +58,6 @@ export const Play = ({
 
 		console.log (forUpdate);
 
-		return forUpdate;
 	};
 
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
@@ -96,15 +96,21 @@ export const Play = ({
 			)}
 			<br />
 			<Button
-			
-			variant="contained"
-			color="success"
-			size="large"
-			onClick={handleClick}
-		>
-			Submit
-		</Button>
-		
+				variant="contained"
+				color="success"
+				size="large"
+				onClick={handleClick}
+			>
+				Submit
+			</Button>
+			<Button
+				variant="contained"
+				color="success"
+				size="large"
+				onClick={() => nav('/stats')}
+			>
+				Stats
+			</Button>
 		</div>
 		</>
 	);
