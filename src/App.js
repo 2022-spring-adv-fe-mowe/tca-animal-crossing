@@ -81,7 +81,7 @@ const villagers = [
   },
 ]
 
-const giftExchanges = [
+const hardCodedGiftExchanges = [
   {
     name: "Shino",
     date: "2022-02-26",
@@ -115,6 +115,8 @@ const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 const App = () => {
 
+  const [giftExchangesState, setGiftExchangesState] = useState(hardCodedGiftExchanges);
+  
   return (
     <div className="App">
       <Routes>
@@ -123,12 +125,13 @@ const App = () => {
           <Stats 
             villagers = {activeVillagers}
             villagerNames = {activeVillagerList}
-            giftExchanges = {giftExchanges}
+            giftExchanges = {giftExchangesState}
           />
         } />
         <Route path="play" element={
           <Play
             villagers = {activeVillagers}
+            giftExchanges = {giftExchangesState}
           />
         } />
         <Route path="addvillager" element={
