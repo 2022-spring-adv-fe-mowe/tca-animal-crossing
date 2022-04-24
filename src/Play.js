@@ -12,8 +12,11 @@ import { useState, useRef } from 'react';
 import React from 'react';
 
 export const Play = ({
-	villagers 
+	villagers,
+	villagerNames 
 }) => {
+
+	console.log(villagerNames);
 
 	const nav = useNavigate();
 	const select = React.useRef(null);
@@ -23,7 +26,8 @@ export const Play = ({
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
 	//Sort villagers alphabetically
-	villagers.sort();
+	//villagers.sort();
+	//villagerNames.sort();
 
 	//Use state to note gift exchange type on play screen 
   const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
@@ -50,6 +54,8 @@ export const Play = ({
 			latestGiftExchange: y.giftExchange,
 			latestGiftedDate: y.date, 
 		}));
+
+		console.log(giftExchangeResult);
 
 	};
 

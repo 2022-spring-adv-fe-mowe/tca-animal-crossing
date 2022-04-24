@@ -121,7 +121,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="stats" element={
           <Stats 
-            villagers = {villagers}
+            villagers = {activeVillagers}
+            villagerNames = {activeVillagerList}
             giftExchanges = {giftExchanges}
           />
         } />
