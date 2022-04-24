@@ -17,36 +17,26 @@ const villagers = [
     name: "Ione",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
-  },
+    },
   {
     name: "Rodney",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Baabara",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Stinky",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Shino",
     picture: false, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Walker",
@@ -64,8 +54,7 @@ const villagers = [
     name: "Marshal",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
+    
   },
   {
     name: "Octavian",
@@ -78,8 +67,6 @@ const villagers = [
     name: "Skye",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Gruff",
@@ -90,27 +77,25 @@ const villagers = [
     name: "Cole",
     picture: false,
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
 ]
 
-const interactions = [
+const giftExchanges = [
   {
-    villager: "Shino",
+    name: "Shino",
     date: "2022-02-26",
-    interaction: 
+    giftExchange: 
       "GIR"
   },
   {
-    villager: "Octavian",
+    name: "Octavian",
     date: "2022-02-26",
-    interaction: "GIR"
+    giftExchange: "GIR"
   },
   { 
-    villager: "Skye",
+    name: "Skye",
     date: "2022-04-01",
-    interaction: "na"
+    giftExchange: "NA"
   }
 ]
 /////////////END HARDCODED DATA//////////////
@@ -123,13 +108,9 @@ const activeVillagerList = activeVillagers.map(x => x.name);
 const archivedVillagers = villagers.filter(x => x.active === false);
 const archivedVillagerList = archivedVillagers.map(x => x.name);
 
-console.log(archivedVillagerList);
-
 //Determine which villagers have yet to provide their photo
 const villagersWithoutPicture = villagers.filter(x => x.picture === false);
 const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
-
-console.log(villagersWithoutPictureList);
 
 const App = () => {
 
@@ -140,18 +121,16 @@ const App = () => {
         <Route path="stats" element={
           <Stats 
             villagers = {villagers}
+            giftExchanges = {giftExchanges}
           />
         } />
         <Route path="play" element={
           <Play
-            villagers = {activeVillagerList}
-            picturesNeeded = {villagersWithoutPictureList}
+            villagers = {activeVillagers}
           />
         } />
         <Route path="addvillager" element={
-          <AddVillager
-            villagers = {activeVillagerList}
-          />
+          <AddVillager/>
         } />
       </Routes>
     </div>

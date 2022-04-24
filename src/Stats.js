@@ -1,8 +1,7 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 
-export const Stats = ({villagers}) => {
+export const Stats = ({giftExchanges}) => {
 
-	console.log(villagers);
 
 	return(
 		<>
@@ -14,22 +13,20 @@ export const Stats = ({villagers}) => {
 					<TableHead>
 						<TableRow>
 							<TableCell>Villager Name</TableCell>
-							<TableCell>Last Gift Date</TableCell>
-							<TableCell>Last Gift Exchange Type</TableCell>
-							<TableCell>Picture</TableCell>
+							<TableCell>Last Gift Exchange Date</TableCell>
+							<TableCell>Last Gift Exchange Result</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{villagers.map(villager => 
-							<TableRow 
-									key={villager.name}
+						{giftExchanges.map(giftExchange => 
+						<TableRow 
+									key={giftExchange.name}
 							>
-								<TableCell>{villager.name}</TableCell>
-								<TableCell>{villager.lastGiftedDate}</TableCell>
-								<TableCell>{villager.lastGiftExchange}</TableCell>
-								<TableCell>{villager.picture}</TableCell>
+								<TableCell>{giftExchange.name}</TableCell>
+								<TableCell>{giftExchange.date}</TableCell>
+								<TableCell>{giftExchange.giftExchange}</TableCell>
 							</TableRow>
-						)}
+						)};
 					</TableBody>
 				</Table>
 			</TableContainer>
