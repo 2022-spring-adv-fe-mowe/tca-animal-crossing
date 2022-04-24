@@ -6,8 +6,6 @@ import Button from "@mui/material/Button";
 
 import './App.css';
 
-import localforage from 'localforage';
-
 import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
@@ -31,7 +29,7 @@ export const Play = ({
   const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
 		name: x,
 		giftExchange: '',
-		latestGiftedDate: date
+		date: date
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
@@ -45,20 +43,15 @@ export const Play = ({
 
 	//After "Submit" button is entered, update villager data with new gift exchange interaction
   const handleClick = () => {
-		const newResults = villagersGiftExchange.filter(x => x.giftExchange !== "")
-		const forUpdate = newResults.map(y => ({
+		const giftExchangeResult = villagersGiftExchange.filter(x => x.giftExchange !== "")
+		const addGiftExchangeResult = giftExchangeResult.map(y => ({
 			name: y.name,
 			latestGiftExchange: y.giftExchange,
-			latestGiftedDate: y.latestGiftedDate, 
+			latestGiftedDate: y.date, 
 		}))
-		 
-
-			//Send user to Stats page to view villager stats
-			//nav("/stats");
-
-		console.log (forUpdate);
-
 	};
+
+	
 
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(
