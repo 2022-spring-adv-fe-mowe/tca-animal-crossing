@@ -1,14 +1,14 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select  from "@mui/material/Select";
+import Select, { selectClasses }  from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
 import './App.css';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import React from 'react';
 
 export const Play = ({
@@ -16,7 +16,7 @@ export const Play = ({
 }) => {
 
 	const nav = useNavigate();
-
+	const select = React.useRef(null);
 
 	//Generate today's date
 	const currentDate = new Date();
@@ -39,6 +39,7 @@ export const Play = ({
 				giftExchange: x.name === villager ? newGiftExchange : x.giftExchange
 			}))
 		);
+
 	};
 
 	//After "Submit" button is entered, update villager data with new gift exchange interaction
@@ -48,8 +49,10 @@ export const Play = ({
 			name: y.name,
 			latestGiftExchange: y.giftExchange,
 			latestGiftedDate: y.date, 
-		}))
+		}));
+
 	};
+
 
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(
@@ -65,6 +68,7 @@ export const Play = ({
 					<InputLabel>{x.name}</InputLabel>
 					<Select
 						labelId="gift-exchange-label"
+						inputRef={select}
 						id="gift-exchange"
 						value={villagersGiftExchange.filter(y => y.name === x).giftExchange}		
 						label="Gift Exchange"
@@ -87,10 +91,11 @@ export const Play = ({
 			)}
 			<br />
 			<Button
+				className="submitButton"
 				variant="contained"
 				color="success"
 				size="large"
-				onClick={submitResults}
+				onClick={submitResults}			
 			>
 				Submit
 			</Button>
@@ -103,11 +108,18 @@ export const Play = ({
 				Stats
 			</Button>
 			<Button
+				className="frustrationButton"
 				variant="contained"
 				color="secondary"
 				size="large"
 				onClick={() => nav('/crying')}
 			> Frustration Button 
+			</Button>
+			<Button
+				variant="contained"
+				size="large"
+				onClick={() => nav('/')}
+			> Home 
 			</Button>
 		</div>
 		</>
