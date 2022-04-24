@@ -42,7 +42,7 @@ export const Play = ({
 	};
 
 	//After "Submit" button is entered, update villager data with new gift exchange interaction
-  const handleClick = () => {
+  const submitResults = () => {
 		const giftExchangeResult = villagersGiftExchange.filter(x => x.giftExchange !== "")
 		const addGiftExchangeResult = giftExchangeResult.map(y => ({
 			name: y.name,
@@ -92,7 +92,7 @@ export const Play = ({
 				variant="contained"
 				color="success"
 				size="large"
-				onClick={handleClick}
+				onClick={submitResults}
 			>
 				Submit
 			</Button>
