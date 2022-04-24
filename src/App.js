@@ -10,6 +10,7 @@ import { Play } from './Play';
 import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
+import { Crying } from './Crying'
 
 const villagers = [
 /////////////START HARDCODED DATA//////////////
@@ -131,6 +132,9 @@ const App = () => {
         } />
         <Route path="addvillager" element={
           <AddVillager/>
+        } />
+        <Route path="crying" element={
+          <Crying/>
         } />
       </Routes>
     </div>

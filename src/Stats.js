@@ -1,7 +1,9 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
+import { useNavigate } from "react-router-dom";
 
 export const Stats = ({giftExchanges}) => {
 
+	const nav = useNavigate();
 
 	return(
 		<>
@@ -30,6 +32,12 @@ export const Stats = ({giftExchanges}) => {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<Button
+				variant="contained"
+				color="secondary"
+				size="large"
+				onClick={() => nav('/')}
+			> Home </Button>
 		</div>
 		</>
 	);

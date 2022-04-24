@@ -51,8 +51,6 @@ export const Play = ({
 		}))
 	};
 
-	
-
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(
 		<>
@@ -64,7 +62,7 @@ export const Play = ({
 				<FormControl 
 					sx={{ m: 1, minWidth: 340 }}
 				>
-					<InputLabel>{x}</InputLabel>
+					<InputLabel>{x.name}</InputLabel>
 					<Select
 						labelId="gift-exchange-label"
 						id="gift-exchange"
@@ -103,6 +101,13 @@ export const Play = ({
 				onClick={() => nav('/stats')}
 			>
 				Stats
+			</Button>
+			<Button
+				variant="contained"
+				color="secondary"
+				size="large"
+				onClick={() => nav('/crying')}
+			> Frustration Button 
 			</Button>
 		</div>
 		</>
