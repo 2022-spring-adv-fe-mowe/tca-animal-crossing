@@ -117,6 +117,17 @@ const App = () => {
 
   const [giftExchangesState, setGiftExchangesState] = useState(hardCodedGiftExchanges);
 
+  const addNewGiftExchangeToState = (newGiftExchangeToAdd) => {
+
+    // Call the function we got back from useState() to update the state.
+    setGiftExchangesState(
+      [
+        ...giftExchangesState   // Spread in existing gift exchanges.
+        , newGiftExchangeToAdd  // Then add the new one.
+      ]
+    );
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -132,6 +143,7 @@ const App = () => {
           <Play
             villagers = {activeVillagers}
             giftExchanges = {giftExchangesState}
+            addNewGiftExchangeToState={addNewGiftExchangeToState}
           />
         } />
         <Route path="addvillager" element={

@@ -13,10 +13,10 @@ import React from 'react';
 
 export const Play = ({
 	villagers,
-	villagerNames 
+	// villagerNames, 	// You were never passing these into the Play component.
+	// giftExchanges,		// Currently not using in the Play component
+	addNewGiftExchangeToState,
 }) => {
-
-	console.log(villagerNames);
 
 	const nav = useNavigate();
 	const select = React.useRef(null);
@@ -29,34 +29,48 @@ export const Play = ({
 	//villagers.sort();
 	//villagerNames.sort();
 
-	//Use state to note gift exchange type on play screen 
-  const [villagersGiftExchange, setVillagersGiftExchange] = useState(villagers.map(x => ({
+	//
+	// This is 'local' state, just to store the selected options for
+	// each villager. It isn't the gift exchange state. That has been
+	// 'lifted' into the App.js.
+	//
+  	const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(villagers.map(x => ({
 		name: x,
 		giftExchange: '',
-		date: date
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
-		setVillagersGiftExchange(
-			villagersGiftExchange.map(x => ({
+		setVillagersGiftExchangeSelections(
+			villagersGiftExchangeSelections.map(x => ({
 				...x, 
 				giftExchange: x.name === villager ? newGiftExchange : x.giftExchange
 			}))
 		);
-
 	};
 
 	//After "Submit" button is entered, update villager data with new gift exchange interaction
-  const submitResults = () => {
-		const giftExchangeResult = villagersGiftExchange.filter(x => x.giftExchange !== "")
-		const addGiftExchangeResult = giftExchangeResult.map(y => ({
-			name: y.name,
-			latestGiftExchange: y.giftExchange,
-			latestGiftedDate: y.date, 
+	//
+	// Here is where we want to update the 'lifted' state by calling
+	// the function that App passed into Play...
+	//
+  	const submitResults = () => {
+
+		//
+		// Get the gift exchange selections that the user has made.
+		//
+		// Note, blanks assume the user did not interact with that 
+		// villager.
+		//
+		const giftExchangeSelectionsMade = villagersGiftExchangeSelections.filter(x => x.giftExchange !== "");
+		
+		// Get the timestamp once and use it for each villager's gift exchange.
+		const timestampWhenUserSubmitted = new Date().toISOString();
+
+		// Add each selection made to the the lifted state.
+		giftExchangeSelectionsMade.forEach(x => addNewGiftExchangeToState({
+			x									// A JS object with name and giftExchange properties
+			, date: timestampWhenUserSubmitted	// And add the timestamp of when it happened
 		}));
-
-		console.log(giftExchangeResult);
-
 	};
 
 
@@ -76,7 +90,7 @@ export const Play = ({
 						labelId="gift-exchange-label"
 						inputRef={select}
 						id="gift-exchange"
-						value={villagersGiftExchange.filter(y => y.name === x).giftExchange}		
+						value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}		
 						label="Gift Exchange"
 						onChange={(e) => handleChange(x, e.target.value)}
 					>
