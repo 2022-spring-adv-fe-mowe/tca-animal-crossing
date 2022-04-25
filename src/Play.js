@@ -15,8 +15,10 @@ export const Play = ({
 	villagers,
 	// villagerNames, 	// You were never passing these into the Play component.
 	// giftExchanges,		// Currently not using in the Play component
-	addNewGiftExchangeToState,
+	addNewGiftExchangesToState,
 }) => {
+
+	console.log("What shape are villagers, wish I had TS here : - )", villagers);
 
 	const nav = useNavigate();
 	const select = React.useRef(null);
@@ -35,7 +37,7 @@ export const Play = ({
 	// 'lifted' into the App.js.
 	//
   	const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(villagers.map(x => ({
-		name: x,
+		name: x.name,
 		giftExchange: '',
 	})));
 	
@@ -43,7 +45,7 @@ export const Play = ({
 		setVillagersGiftExchangeSelections(
 			villagersGiftExchangeSelections.map(x => ({
 				...x, 
-				giftExchange: x.name === villager ? newGiftExchange : x.giftExchange
+				giftExchange: x.name === villager.name ? newGiftExchange : x.giftExchange
 			}))
 		);
 	};
@@ -62,17 +64,16 @@ export const Play = ({
 		// villager.
 		//
 		const giftExchangeSelectionsMade = villagersGiftExchangeSelections.filter(x => x.giftExchange !== "");
-		
+		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
+
 		// Get the timestamp once and use it for each villager's gift exchange.
 		const timestampWhenUserSubmitted = new Date().toISOString();
 
-		// Add each selection made to the the lifted state.
-		giftExchangeSelectionsMade.forEach(x => addNewGiftExchangeToState({
-			x									// A JS object with name and giftExchange properties
+		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => ({
+			...x								// A JS object with name and giftExchange properties
 			, date: timestampWhenUserSubmitted	// And add the timestamp of when it happened
-		}));
+		})));
 	};
-
 
 	//object destructuring? const {villager} <InputLabel>{x.name} etc etc? See whiteboard from cloud class
 	return(

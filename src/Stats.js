@@ -5,6 +5,12 @@ export const Stats = ({giftExchanges}) => {
 
 	const nav = useNavigate();
 
+	// Let's see if new data makes it here ? ? ?
+	//
+	// From 'lifted' state in App.js.
+	//
+	console.log(giftExchanges);
+
 	return(
 		<>
 		<div className="stats">
