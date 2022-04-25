@@ -97,37 +97,38 @@ export const Play = ({
 			)}
 			<br />
 			<Button
-				className="submitButton"
+				id="submitButton"
 				variant="contained"
-				color="success"
 				size="large"
 				onClick={submitResults}			
 			>
 				Submit
 			</Button>
-			<Button
-				variant="contained"
-				color="success"
-				size="large"
-				onClick={() => nav('/stats')}
-			>
-				Stats
-			</Button>
-			<Button
-				className="frustrationButton"
-				variant="contained"
-				color="secondary"
-				size="large"
-				onClick={() => nav('/crying')}
-			> Frustration Button 
-			</Button>
-			<Button
-				variant="contained"
-				size="large"
-				onClick={() => nav('/')}
-			> Home 
-			</Button>
+			<div>
+				<Button
+					variant="contained"
+					color="success"
+					size="large"
+					onClick={() => nav('/stats')}
+				>
+					Stats
+				</Button>
+				<Button
+					variant="contained"
+					size="large"
+					onClick={() => nav('/')}
+				> Home 
+				</Button>
+			</div>
 		</div>
-		</>
+		<Button
+			className="frustrationButton"
+			variant="contained"
+			color="secondary"
+			size="large"
+			onClick={() => nav('/crying')}
+		> Frustration Button 
+		</Button> 
+	</>
 	);
 };

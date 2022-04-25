@@ -35,6 +35,11 @@
   color: #80EFF0;
   background-color: white;
   padding: 2em;
+  margin-bottom: 2em;
+}
+
+.play h1, .play h2, .stats h1 {
+  color: #406969;
 }
 
 .play button {
@@ -47,4 +52,9 @@
   background-color: white;
   color: #80EFF0;
   border: .15em solid #80EFF0;
+}
+
+#submitButton {
+  background-color: #ECCC45;
+  color: #563605;
 }

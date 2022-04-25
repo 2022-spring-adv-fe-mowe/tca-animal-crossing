@@ -8,7 +8,7 @@ export const Stats = ({giftExchanges}) => {
 	return(
 		<>
 		<div className="stats">
-			<h2>Stats</h2>
+			<h1>Stats</h1>
 
 			<TableContainer>
 				<Table>
@@ -33,8 +33,8 @@ export const Stats = ({giftExchanges}) => {
 				</Table>
 			</TableContainer>
 			<Button
+				id="statsHome"
 				variant="contained"
-				color="secondary"
 				size="large"
 				onClick={() => nav('/')}
 			> Home </Button>
