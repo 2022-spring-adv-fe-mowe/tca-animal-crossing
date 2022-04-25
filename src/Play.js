@@ -121,14 +121,14 @@ export const Play = ({
 				</Button>
 			</div>
 		</div>
-		<Button
+		{/* <Button
 			className="frustrationButton"
 			variant="contained"
 			color="secondary"
 			size="large"
 			onClick={() => nav('/crying')}
 		> Frustration Button 
-		</Button> 
+		</Button>  */}
 	</>
 	);
 };

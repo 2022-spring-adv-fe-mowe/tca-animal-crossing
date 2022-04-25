@@ -14,7 +14,7 @@
   font-size: calc(10px + 2vmin);
 }
 
-.buttonMain {
+.buttonMain, #submitButton {
   background-color: #ECCC45;
   color: #563605;
   border: .1em solid #563605;
@@ -46,6 +46,14 @@
   margin: 1em;
   background-color: #80EFF0;
   font-weight: bolder;
+  border-radius: 2em;
+  font-size: 15px;
+  border: .1em solid #406969;
+  font-weight: bolder;
+  padding: .5em;
+  margin: 1em;
+  width: 30%;
+  cursor: pointer;
 }
 
 .play button:hover {
@@ -54,7 +62,3 @@
   border: .15em solid #80EFF0;
 }
 
-#submitButton {
-  background-color: #ECCC45;
-  color: #563605;
-}
