@@ -43,8 +43,6 @@ const villagers = [
     name: "Walker",
     picture: false, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Marlo",
@@ -61,8 +59,6 @@ const villagers = [
     name: "Octavian",
     picture: true, 
     active: true,
-    latestGiftedDate: "",
-    latestGiftExchange: ""
   },
   {
     name: "Skye",
@@ -81,22 +77,29 @@ const villagers = [
   },
 ]
 
-const giftExchanges = [
+//Used to initialize the state
+const hardcodedGiftExchanges = [
   {
     name: "Shino",
     date: "2022-02-26",
     giftExchange: 
-      "GIR"
+      "GIR",
+    picture: false,
+    active: true
   },
   {
     name: "Octavian",
     date: "2022-02-26",
-    giftExchange: "GIR"
+    giftExchange: "GIR",
+    picture: true,
+    active: true
   },
   { 
     name: "Skye",
     date: "2022-04-01",
-    giftExchange: "NA"
+    giftExchange: "NA",
+    picture: true, 
+    active: true
   }
 ]
 /////////////END HARDCODED DATA//////////////
@@ -115,6 +118,9 @@ const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 const App = () => {
 
+  //The lifted state. App will control it, and pass it and functions that change it to other components
+  const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
+
   return (
     <div className="App">
       <Routes>
@@ -123,12 +129,13 @@ const App = () => {
           <Stats 
             villagers = {activeVillagers}
             villagerNames = {activeVillagerList}
-            giftExchanges = {giftExchanges}
+            giftExchanges = {giftExchangesState}
           />
         } />
         <Route path="play" element={
           <Play
             villagers = {activeVillagers}
+            giftExchanges = {giftExchangesState}
           />
         } />
         <Route path="addvillager" element={
