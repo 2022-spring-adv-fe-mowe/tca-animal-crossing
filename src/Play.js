@@ -1,7 +1,7 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { selectClasses }  from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
 import './App.css';
@@ -15,6 +15,8 @@ export const Play = ({
 	villagers,
 	addNewGiftExchangesToState, 
 }) => {
+
+	console.log(villagers);
 
 	const nav = useNavigate();
 	const select = React.useRef(null);
@@ -79,7 +81,7 @@ export const Play = ({
 
 			{villagers.map(x => 
 				<FormControl 
-					sx={{ m: 1, minWidth: 340 }}
+					sx={{ m: 1, minWidth: 250 }}
 				>
 					<InputLabel>{x.name}</InputLabel>
 					<Select
