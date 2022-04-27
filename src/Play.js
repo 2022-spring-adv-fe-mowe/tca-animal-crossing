@@ -66,8 +66,8 @@ export const Play = ({
 
 		//Add each selection made to the lifted state.
 		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => ({
-			x, //A JS object with name and giftExchange properties
-			date: date //and add the timestamp
+			...x, //A JS object with name and giftExchange properties
+			date: date  //and add the timestamp
 		}))); 
 	};
 
@@ -131,14 +131,6 @@ export const Play = ({
 				</Button>
 			</div>
 		</div>
-		{/* <Button
-			className="frustrationButton"
-			variant="contained"
-			color="secondary"
-			size="large"
-			onClick={() => nav('/crying')}
-		> Frustration Button 
-		</Button>  */}
 	</>
 	);
 };
