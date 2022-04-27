@@ -10,7 +10,6 @@ import { Play } from './Play';
 import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
-import { Crying } from './Crying'
 
 const villagers = [
 /////////////START HARDCODED DATA//////////////
@@ -81,23 +80,23 @@ const villagers = [
 const hardcodedGiftExchanges = [
   {
     name: "Shino",
-    date: "2022-02-26",
+    date: "04/01/2022",
     giftExchange: 
-      "GIR",
+      "Gift with gift in return",
     picture: false,
     active: true
   },
   {
     name: "Octavian",
-    date: "2022-02-26",
-    giftExchange: "GIR",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
     picture: true,
     active: true
   },
   { 
     name: "Skye",
-    date: "2022-04-01",
-    giftExchange: "NA",
+    date: "04/04/2022",
+    giftExchange: "Unable to gift villager",
     picture: true, 
     active: true
   }
@@ -122,13 +121,13 @@ const App = () => {
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
   //Call function returned by useState() to update the state
-  const addNewGiftExchangeToState = (newGiftExchangeToAdd) => {
+  const addNewGiftExchangesToState = (newGiftExchangesToAdd) => {
 
     //Call the function we got back from useState() to update the state
     setGiftExchangesState(
       [
         ...giftExchangesState, //Spread in existing gift exchanges
-        newGiftExchangeToAdd //then add the new ones
+        ...newGiftExchangesToAdd //then add the new ones
       ]
     );
   };
@@ -148,13 +147,11 @@ const App = () => {
           <Play
             villagers = {activeVillagers}
             giftExchanges = {giftExchangesState}
+            addNewGiftExchangesToState = {addNewGiftExchangesToState}
           />
         } />
         <Route path="addvillager" element={
           <AddVillager/>
-        } />
-        <Route path="crying" element={
-          <Crying/>
         } />
       </Routes>
     </div>

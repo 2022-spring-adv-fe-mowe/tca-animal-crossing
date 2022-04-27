@@ -13,7 +13,7 @@ import React from 'react';
 
 export const Play = ({
 	villagers,
-	addNewGiftExchangeToState, 
+	addNewGiftExchangesToState, 
 }) => {
 
 	const nav = useNavigate();
@@ -32,7 +32,7 @@ export const Play = ({
 	//into the App.js
 	//
   const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(villagers.map(x => ({
-		name: x,
+		name: x.name,
 		giftExchange: '',
 	})));
 	
@@ -40,7 +40,7 @@ export const Play = ({
 		setVillagersGiftExchangeSelections(
 			villagersGiftExchangeSelections.map(x => ({
 				...x, 
-				giftExchange: x.name === villager ? newGiftExchange : x.giftExchange
+				giftExchange: x.name === villager.name ? newGiftExchange : x.giftExchange
 			}))
 		);
 
@@ -59,15 +59,16 @@ export const Play = ({
 		//
 		const giftExchangeSelectionsMade = villagersGiftExchangeSelections.filter(x => x.giftExchange !== "");
 
+		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
+
 		// Get the timestamp once and use it for each villager's gift exchange
-		const timestampWhenUserSubmitted = new Date().toISOString();
+		//const timestampWhenUserSubmitted = new Date().toISOString();
 
 		//Add each selection made to the lifted state.
-		giftExchangeSelectionsMade.forEach(x => addNewGiftExchangeToState({
+		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => ({
 			x, //A JS object with name and giftExchange properties
-			date: timestampWhenUserSubmitted //and add the timestamp
-		})); 
-		
+			date: date //and add the timestamp
+		}))); 
 	};
 
 	return(
@@ -89,16 +90,16 @@ export const Play = ({
 						label="Gift Exchange"
 						onChange={(e) => handleChange(x, e.target.value)}
 					>
-						<MenuItem value={"GIR"}>
+						<MenuItem value={"Gift with gift in return"}>
 							Gift with gift in return
 						</MenuItem>
-						<MenuItem value={"NIR"}>
+						<MenuItem value={"Gift with no gift in return"}>
 							Gift with no gift in return						
 						</MenuItem>
-						<MenuItem value={"PIR"}>
+						<MenuItem value={"Gift with villager picture in return"}>
 							Gift with villager picture in return
 						</MenuItem>
-						<MenuItem value={"na"}>
+						<MenuItem value={"Unable to gift villager"}>
 							Unable to gift villager
 						</MenuItem>
 					</Select>

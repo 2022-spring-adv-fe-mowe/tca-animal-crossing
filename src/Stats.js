@@ -5,6 +5,8 @@ export const Stats = ({giftExchanges}) => {
 
 	const nav = useNavigate();
 
+	console.log(giftExchanges);
+
 	return(
 		<>
 		<div className="stats">
