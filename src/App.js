@@ -121,6 +121,18 @@ const App = () => {
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
+  //Call function returned by useState() to update the state
+  const addNewGiftExchangeToState = (newGiftExchangeToAdd) => {
+
+    //Call the function we got back from useState() to update the state
+    setGiftExchangesState(
+      [
+        ...giftExchangesState, //Spread in existing gift exchanges
+        newGiftExchangeToAdd //then add the new ones
+      ]
+    );
+  };
+
   return (
     <div className="App">
       <Routes>
