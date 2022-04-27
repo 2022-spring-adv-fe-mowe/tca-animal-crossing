@@ -105,15 +105,6 @@ const hardcodedGiftExchanges = [
 
 //Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
-const activeVillagerList = activeVillagers.map(x => x.name);
-
-// Create a list of archived villagers (for stats purposes)
-const archivedVillagers = villagers.filter(x => x.active === false);
-const archivedVillagerList = archivedVillagers.map(x => x.name);
-
-//Determine which villagers have yet to provide their photo
-const villagersWithoutPicture = villagers.filter(x => x.picture === false);
-const villagersWithoutPictureList = villagersWithoutPicture.map(x=> x.name);
 
 const App = () => {
 
@@ -138,8 +129,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="stats" element={
           <Stats 
-            villagers = {activeVillagers}
-            villagerNames = {activeVillagerList}
             giftExchanges = {giftExchangesState}
           />
         } />

@@ -26,6 +26,7 @@ export const Stats = ({giftExchanges}) => {
 							name: x.name
 							, date: x.date > currentGiftExchangeForVillagerInMap.date ? x.date : currentGiftExchangeForVillagerInMap.date
 							, giftExchange: x.date > currentGiftExchangeForVillagerInMap.date ? x.giftExchange : currentGiftExchangeForVillagerInMap.giftExchange
+							, picture: x.picture
 						}
 
 						// If doesn't exist, add it.
@@ -33,6 +34,7 @@ export const Stats = ({giftExchanges}) => {
 							name: x.name
 							, date: x.date
 							, giftExchange: x.giftExchange
+							, picture: x.picture
 						}
 				)
 
@@ -59,16 +61,18 @@ export const Stats = ({giftExchanges}) => {
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
+							<TableCell>Total # Of Gifts Given</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						{mostRecentGiftExchanges.map(giftExchange => 
 						<TableRow 
-									key={giftExchange.name}
-							>
-								<TableCell>{giftExchange.name}</TableCell>
+							key={giftExchange.name}
+						>
+								<TableCell id={ giftExchange.picture !== true ? "picture-needed-table" : "" }>{giftExchange.name}</TableCell>
 								<TableCell>{giftExchange.date}</TableCell>
 								<TableCell>{giftExchange.giftExchange}</TableCell>
+								<TableCell></TableCell>
 							</TableRow>
 						)};
 					</TableBody>

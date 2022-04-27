@@ -1,7 +1,7 @@
 //import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import './App.css';
-import aclogo from './acnh logo.png';
+import aclogo from './img/acnh logo.png';
 
 
 export const Home = () => {

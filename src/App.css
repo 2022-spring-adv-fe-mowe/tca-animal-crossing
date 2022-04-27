@@ -2,8 +2,8 @@
 .App {
   min-height: 100vh;
   text-align: center;
-  background-color: #80EFF0;
-  color: white;
+  background-image: url("./img/background.png");
+  color: #fefefc;
   padding: 2em;
 }
 
@@ -15,7 +15,7 @@
   font-size: calc(10px + 2vmin);
 }
 
-.buttonMain, #submitButton {
+.buttonMain, .play-screen-buttons {
   background-color: #ECCC45;
   color: #563605;
   border: .1em solid #563605;
@@ -33,18 +33,18 @@
 }
 
 .play, .stats {
-  color: #80EFF0;
-  background-color: white;
+  background-color: #ffffff;
   padding: 2em;
+  border-radius: 2em;
 }
 
 .play h1, .play h2, .stats h1 {
   color: #406969;
 }
 
-.play button {
-  margin: 1em;
-  background-color: #80EFF0;
+.play button, .stats button {
+  background-color: #5adbc5;
+  color: #ecefd6;
   font-weight: bolder;
   border-radius: 2em;
   font-size: 15px;
@@ -52,18 +52,23 @@
   font-weight: bolder;
   padding: .5em;
   margin: 1em;
-  width: 30%;
+  width: 40%;
   cursor: pointer;
 }
 
-.play button:hover {
-  background-color: white;
+.play button:hover, .stats button:hover {
+  background-color: #ecefd6;
   color: #80EFF0;
-  border: .15em solid #80EFF0;
+  border: .15em solid #5adbc5;
 }
 
 #picture-needed {
   border: .25em solid palevioletred !important;
+}
+
+#picture-needed-table {
+  font-weight: bolder;
+  color: palevioletred !important;
 }
 
 .play p {

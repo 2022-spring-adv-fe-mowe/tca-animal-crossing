@@ -63,77 +63,63 @@ export const Play = ({
 
 		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
 
-		// Get the timestamp once and use it for each villager's gift exchange
-		//const timestampWhenUserSubmitted = new Date().toISOString();
-
 		//Add each selection made to the lifted state.
 		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => ({
 			...x, //A JS object with name and giftExchange properties
-			date: date  //and add the timestamp
+			date: date  //and add the date
 		}))); 
+
+		nav('/Stats');
 	};
 
 	return(
 		<>
 			<div className="play">
-			<h1>Gift Exchange</h1>
-			<h2> {date} </h2>
-			<p><span id="pink">Pink border</span> indicates picture has not yet been recieved by villager</p>
+				<h1>Gift Exchange</h1>
+				<h2> {date} </h2>
+				<p><span id="pink">Pink border</span> indicates picture has not yet been recieved from villager</p>
 
-			{villagers.map(x => 
-				<FormControl 
-					sx={{ m: 1, minWidth: 250 }}
-				>
-					<InputLabel>{x.name}</InputLabel>
-					<Select
-						labelId="gift-exchange-label"
-						inputRef={select}
-						id={ x.picture !== true ? "picture-needed" : "gift-exchange" }
-						value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}	
-						label="Gift Exchange"
-						onChange={(e) => handleChange(x, e.target.value)}
+				{villagers.map(x => 
+					<FormControl 
+						sx={{ m: 1, minWidth: 250 }}
 					>
-						<MenuItem value={"Gift with gift in return"}>
-							Gift with gift in return
-						</MenuItem>
-						<MenuItem value={"Gift with no gift in return"}>
-							Gift with no gift in return						
-						</MenuItem>
-						<MenuItem value={"Gift with villager picture in return"}>
-							Gift with villager picture in return
-						</MenuItem>
-						<MenuItem value={"Unable to gift villager"}>
-							Unable to gift villager
-						</MenuItem>
-					</Select>
-				</FormControl>				
-			)}
-			<br />
-			<Button
-				id="submitButton"
-				variant="contained"
-				size="large"
-				onClick={submitResults}			
-			>
-				Submit
-			</Button>
-			<div>
+						<InputLabel>{x.name}</InputLabel>
+						<Select
+							labelId="gift-exchange-label"
+							inputRef={select}
+							id={ x.picture !== true ? "picture-needed" : "gift-exchange" }
+							value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}	
+							label="Gift Exchange"
+							onChange={(e) => handleChange(x, e.target.value)}
+						>
+							<MenuItem value={"Gift with gift in return"}>
+								Gift with gift in return
+							</MenuItem>
+							<MenuItem value={"Gift with no gift in return"}>
+								Gift with no gift in return						
+							</MenuItem>
+							<MenuItem value={"Gift with villager picture in return"}>
+								Gift with villager picture in return
+							</MenuItem>
+							<MenuItem value={"Unable to gift villager"}>
+								Unable to gift villager
+							</MenuItem>
+						</Select>
+					</FormControl>				
+				)}
+				<br />
 				<Button
-					variant="contained"
-					color="success"
-					size="large"
-					onClick={() => nav('/stats')}
+					className="play-screen-buttons"
+					onClick={submitResults}			
 				>
-					Stats
+					Submit
 				</Button>
 				<Button
-					variant="contained"
-					size="large"
-					onClick={() => nav('/')}
-				> Home 
-				</Button>
+						className="play-screen-buttons"
+						onClick={() => nav('/')}
+					> Go Back 
+					</Button>
 			</div>
-		</div>
-	</>
+		</>
 	);
 };
