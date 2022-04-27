@@ -78,6 +78,7 @@ export const Play = ({
 			<div className="play">
 			<h1>Gift Exchange</h1>
 			<h2> {date} </h2>
+			<p><span id="pink">Pink border</span> indicates picture has not yet been recieved by villager</p>
 
 			{villagers.map(x => 
 				<FormControl 
@@ -87,7 +88,7 @@ export const Play = ({
 					<Select
 						labelId="gift-exchange-label"
 						inputRef={select}
-						id="gift-exchange"
+						id={ x.picture !== true ? "picture-needed" : "gift-exchange" }
 						value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}	
 						label="Gift Exchange"
 						onChange={(e) => handleChange(x, e.target.value)}

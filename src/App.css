@@ -1,3 +1,4 @@
+
 .App {
   min-height: 100vh;
   text-align: center;
@@ -35,7 +36,6 @@
   color: #80EFF0;
   background-color: white;
   padding: 2em;
-  margin-bottom: 2em;
 }
 
 .play h1, .play h2, .stats h1 {
@@ -62,3 +62,15 @@
   border: .15em solid #80EFF0;
 }
 
+#picture-needed {
+  border: .25em solid palevioletred !important;
+}
+
+.play p {
+  color: #563605; 
+}
+
+.play #pink {
+  color: palevioletred !important;
+  font-weight: bold;
+}
