@@ -3,7 +3,7 @@ import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 import { Play } from './Play';
@@ -121,21 +121,8 @@ const App = () => {
     );
   };
 
-  const email = "tsteele@madisoncollege.edu";
-
-  const loadGameResults = async () => {
-    setGiftExchangesState(await loadGamesFromCloud(email, "tca-animal-crossing") ?? []);
-  };
-
-  useEffect(
-    () => {
-      loadGameResults();
-    }, 
-    []
-  );
-
   //Call function returned by useState() to update the state
-  const addNewGiftExchangesToState = async (newGiftExchangesToAdd) => {
+  const addNewGiftExchangesToState = (newGiftExchangesToAdd) => {
 
     //Call the function we got back from useState() to update the state
     setGiftExchangesState(
@@ -145,12 +132,6 @@ const App = () => {
       ]
     );
     
-    await saveGameToCloud(
-      email
-    , "tca-animal-crossing"
-    , new Date().toISOString()
-    , newGiftExchangesToAdd
-  );
   };
 
   return ( 
