@@ -10,6 +10,9 @@ export const Stats = ({giftExchanges}) => {
 	//Shape data for display using .reduce (copied and pasted from Tom's code)
 	const mostRecentGiftExchanges = [
 
+		//Get a count of number of gift exchanges per villager
+		
+		
 		// Group by name and only save the most recent gift exchange.
 		...giftExchanges.reduce(
 			(acc, x) => {
@@ -26,7 +29,7 @@ export const Stats = ({giftExchanges}) => {
 							name: x.name
 							, date: x.date > currentGiftExchangeForVillagerInMap.date ? x.date : currentGiftExchangeForVillagerInMap.date
 							, giftExchange: x.date > currentGiftExchangeForVillagerInMap.date ? x.giftExchange : currentGiftExchangeForVillagerInMap.giftExchange
-							, picture: x.picture
+							, picture: x.date > currentGiftExchangeForVillagerInMap.date ? x.picture : currentGiftExchangeForVillagerInMap.picture
 						}
 
 						// If doesn't exist, add it.
@@ -48,7 +51,6 @@ export const Stats = ({giftExchanges}) => {
 
 	console.log("mostRecentGiftExchanges", mostRecentGiftExchanges);
 
-
 	return(
 		<>
 		<div className="stats">
@@ -61,7 +63,6 @@ export const Stats = ({giftExchanges}) => {
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
-							<TableCell>Total # Of Gifts Given</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>

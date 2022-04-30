@@ -36,13 +36,14 @@ export const Play = ({
   const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(villagers.map(x => ({
 		name: x.name,
 		giftExchange: '',
+		picture: x.picture
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
 		setVillagersGiftExchangeSelections(
 			villagersGiftExchangeSelections.map(x => ({
 				...x, 
-				giftExchange: x.name === villager.name ? newGiftExchange : x.giftExchange
+				giftExchange: x.name === villager.name ? newGiftExchange : x.giftExchange,
 			}))
 		);
 
@@ -54,6 +55,7 @@ export const Play = ({
 	//
   const submitResults = () => {
 
+
 		// 
 		// Get the gift exchange that the user has made
 		//
@@ -63,11 +65,22 @@ export const Play = ({
 
 		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
 
+		/* const villagerPictureStatus = giftExchangeSelectionsMade.map(x => ({
+			...x, 
+			picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture
+		}));
+		
+		console.log("villagerPictureStatus ", villagerPictureStatus);
+ */
 		//Add each selection made to the lifted state.
-		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => ({
-			...x, //A JS object with name and giftExchange properties
-			date: date  //and add the date
-		}))); 
+		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => (
+		
+			{
+				...x, //A JS object with name and giftExchange properties
+				date: date,  //and add the date
+				picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture
+			}
+		))); 
 
 		nav('/Stats');
 	};
@@ -105,6 +118,7 @@ export const Play = ({
 								Unable to gift villager
 							</MenuItem>
 						</Select>
+
 					</FormControl>				
 				)}
 				<br />
