@@ -38,8 +38,13 @@
   border-radius: 2em;
 }
 
-.play h1, .play h2, .stats h1, .addVillager h2 {
+.play h1, .play h2, .stats h1, .addVillager h1 {
   color: #406969;
+}
+
+.addVillager h3 {
+  color: teal;
+  margin-top: 1.75em;
 }
 
 .play button, .stats button {

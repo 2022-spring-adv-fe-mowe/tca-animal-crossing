@@ -6,7 +6,11 @@ import './App.css';
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export const AddVillager = ({addNewVillager}) => {
+export const AddVillager = (
+		{
+			addNewVillager
+		}
+	) => {
 
 	const nav = useNavigate();
 
@@ -14,24 +18,31 @@ export const AddVillager = ({addNewVillager}) => {
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`; 
 
 	const [newVillagerName, setNewVillagerName] = useState("");
+	// const [villagerToBeReplaced, setReplacedVillagerName] = useState("")
 
 	const submitNewVillager = () => {
-		newVillagerName !== "" ?
+		newVillagerName !== "" 
+		// || villagerToBeReplaced !== "" 
+		?
+			
 			addNewVillager({
 				name: newVillagerName,
 				giftExchange: "Villager added to island",
 				date: date,
 				picture: false,
 				active: true
-			})
-		: alert('Please enter a name')
+			},
+			alert(newVillagerName + " has been added to your island. Welcome, " + newVillagerName + "!"),
+			nav ("/")
+			)
+		: alert('Please enter a name in both fields')
 	};
 
 	return(
 		<>
 			<div className="addVillager">
-				<h2>Add Villager</h2>
-
+				<h1>Add Villager</h1>
+				<h3>New Villager</h3>
 				<TextField
 					sx={{
 						bgcolor: 'white',
@@ -42,11 +53,24 @@ export const AddVillager = ({addNewVillager}) => {
 					label="Villager Name"
 					value={newVillagerName}
 					onChange={(e) => setNewVillagerName(e.target.value)}
-				>
-				</TextField>
+				/>
+	{/* 			<h3>Villager Leaving Island</h3>
+				<TextField
+					sx={{
+						bgcolor: 'white',
+						mr: 2
+					}}
+					required
+					id="required-text-field"
+					label="Villager name"
+					value={villagerToBeReplaced}
+					onChange={(e) => setReplacedVillagerName(e.target.value)}
+				/> */}
+				<br />
 				<Button
 					sx={{
-						mt: 1,
+						mt: 2,
+						mb: 2,
 						bgcolor: 'teal'
 					}}
 					variant="contained"

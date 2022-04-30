@@ -102,23 +102,24 @@ const hardcodedGiftExchanges = [
   }
 ]
 /////////////END HARDCODED DATA//////////////
-
 //Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
 
+
 const App = () => {
 
+  
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
   const addNewVillager = (newVillagerToAdd) => {
-    console.log(newVillagerToAdd)
     setGiftExchangesState(
       [
         ...giftExchangesState,
         newVillagerToAdd
-      ]
+      ],
     );
+    
   };
 
   //Call function returned by useState() to update the state
