@@ -4,8 +4,11 @@ import TextField from "@mui/material/TextField";
 import './App.css';
 
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export const AddVillager = ({addNewVillager}) => {
+
+	const nav = useNavigate();
 
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`; 
@@ -13,16 +16,17 @@ export const AddVillager = ({addNewVillager}) => {
 	const [newVillagerName, setNewVillagerName] = useState("");
 
 	const submitNewVillager = () => {
-		addNewVillager({
-			name: newVillagerName,
-			giftExchange: "Villager added to island",
-			date: date,
-			picture: false,
-			active: true})
-			
-			};
-	
-	
+		newVillagerName !== "" ?
+			addNewVillager({
+				name: newVillagerName,
+				giftExchange: "Villager added to island",
+				date: date,
+				picture: false,
+				active: true
+			})
+		: alert('Please enter a name')
+	};
+
 	return(
 		<>
 			<div className="addVillager">
@@ -43,13 +47,21 @@ export const AddVillager = ({addNewVillager}) => {
 				<Button
 					sx={{
 						mt: 1,
-						bgcolor: 'teal'}}
+						bgcolor: 'teal'
+					}}
 					variant="contained"
+					size="large"
 					color="secondary"
 					onClick={submitNewVillager}
 				>
 					Submit
 				</Button>
+				<br />
+				<Button
+						size="large"
+						onClick={() => nav('/')}
+					> Home
+					</Button>
 			</div>
 		</>
 	);
