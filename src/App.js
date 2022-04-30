@@ -11,8 +11,6 @@ import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
-import { saveGameToCloud, loadGamesFromCloud } from './TcaCloudAPI';
-
 const villagers = [
 /////////////START HARDCODED DATA//////////////
   {
