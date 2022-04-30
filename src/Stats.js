@@ -9,9 +9,6 @@ export const Stats = ({giftExchanges}) => {
 
 	//Shape data for display using .reduce (copied and pasted from Tom's code)
 	const mostRecentGiftExchanges = [
-
-		//Get a count of number of gift exchanges per villager
-		
 		
 		// Group by name and only save the most recent gift exchange.
 		...giftExchanges.reduce(
