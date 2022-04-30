@@ -3,13 +3,15 @@ import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 
 import { Play } from './Play';
 import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
+
+import { saveGameToCloud, loadGamesFromCloud } from './TcaCloudAPI';
 
 const villagers = [
 /////////////START HARDCODED DATA//////////////
@@ -111,8 +113,21 @@ const App = () => {
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
+  const email = "tsteele@madisoncollege.edu";
+
+  const loadGameResults = async () => {
+    setGiftExchangesState(await loadGamesFromCloud(email, "tca-animal-crossing") ?? []);
+  };
+
+  useEffect(
+    () => {
+      loadGameResults();
+    }, 
+    []
+  );
+
   //Call function returned by useState() to update the state
-  const addNewGiftExchangesToState = (newGiftExchangesToAdd) => {
+  const addNewGiftExchangesToState = async (newGiftExchangesToAdd) => {
 
     //Call the function we got back from useState() to update the state
     setGiftExchangesState(
@@ -121,9 +136,18 @@ const App = () => {
         ...newGiftExchangesToAdd //then add the new ones
       ]
     );
+    
+    await saveGameToCloud(
+      email
+    , "tca-animal-crossing"
+    , new Date().toISOString()
+    , newGiftExchangesToAdd
+  );
   };
 
-  return (
+  
+
+  return ( 
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />

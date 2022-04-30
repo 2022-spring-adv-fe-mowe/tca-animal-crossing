@@ -21,7 +21,7 @@ export const saveGameToCloud = async (email, appName, timestamp, gameResult) => 
     const marshalledGame = marshall(
       dynamoGame
       , {
-        removeUndefinedValues: true
+        removeUndefinedValues: true 
         , convertClassInstanceToMap: true
       }
     );

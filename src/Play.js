@@ -25,9 +25,6 @@ export const Play = ({
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
-	//Sort villagers alphabetically **** still want to get this working *****
-	//villagers.sort();
-
 	//
 	//This is 'local' state to store selected options for each villager
 	//It is not the gift exchange state. That state has been 'lifted'
@@ -54,8 +51,6 @@ export const Play = ({
 	// calling the function that App.js passed into Play.js
 	//
   const submitResults = () => {
-
-
 		// 
 		// Get the gift exchange that the user has made
 		//
@@ -65,13 +60,6 @@ export const Play = ({
 
 		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
 
-		/* const villagerPictureStatus = giftExchangeSelectionsMade.map(x => ({
-			...x, 
-			picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture
-		}));
-		
-		console.log("villagerPictureStatus ", villagerPictureStatus);
- */
 		//Add each selection made to the lifted state.
 		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => (
 		
