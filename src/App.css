@@ -15,7 +15,7 @@
   font-size: calc(10px + 2vmin);
 }
 
-.buttonMain, .play-screen-buttons {
+.buttonMain, .play-screen-buttons, .add-new-villager {
   background-color: #ECCC45;
   color: #563605;
   border: .1em solid #563605;
@@ -32,13 +32,13 @@
   margin-bottom: 1em;
 }
 
-.play, .stats {
+.play, .stats, .addVillager {
   background-color: #ffffff;
   padding: 2em;
   border-radius: 2em;
 }
 
-.play h1, .play h2, .stats h1 {
+.play h1, .play h2, .stats h1, .addVillager h2 {
   color: #406969;
 }
 

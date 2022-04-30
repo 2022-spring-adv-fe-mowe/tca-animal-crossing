@@ -1,6 +1,8 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+import './App.css';
+
 import { useState } from "react";
 
 export const AddVillager = ({addNewVillager}) => {
@@ -23,25 +25,32 @@ export const AddVillager = ({addNewVillager}) => {
 	
 	return(
 		<>
-			<h2>Add Villager</h2>
+			<div className="addVillager">
+				<h2>Add Villager</h2>
 
-			<TextField
-				required
-				id="outlined-required"
-				label="Villager Name"
-				variant="outlined"
-				value={newVillagerName}
-				onChange={(e) => setNewVillagerName(e.target.value)}
-			>
-			</TextField>
-			<Button
-				variant="contained"
-				color="success"
-				size="large"
-				onClick={submitNewVillager}
-			>
-				Submit
-			</Button>
+				<TextField
+					sx={{
+						bgcolor: 'white',
+						mr: 2
+					}}
+					required
+					id="required-text-field"
+					label="Villager Name"
+					value={newVillagerName}
+					onChange={(e) => setNewVillagerName(e.target.value)}
+				>
+				</TextField>
+				<Button
+					sx={{
+						mt: 1,
+						bgcolor: 'teal'}}
+					variant="contained"
+					color="secondary"
+					onClick={submitNewVillager}
+				>
+					Submit
+				</Button>
+			</div>
 		</>
 	);
 };
