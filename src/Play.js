@@ -83,11 +83,9 @@ export const Play = ({
 				{villagers.map(x => 
 					<FormControl 
 						sx={{ m: 1, minWidth: 250 }}
+						key={x.name}
 					>
-						<InputLabel
-							key={x.name}
-						>{x.name}
-						</InputLabel>
+						<InputLabel>{x.name}	</InputLabel>
 						<Select
 							labelId="gift-exchange-label"
 							inputRef={select}

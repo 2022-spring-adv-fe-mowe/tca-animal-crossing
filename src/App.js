@@ -105,7 +105,6 @@ const hardcodedGiftExchanges = [
 //Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
 
-
 const App = () => {
 
   
