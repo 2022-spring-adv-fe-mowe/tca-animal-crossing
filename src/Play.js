@@ -84,7 +84,10 @@ export const Play = ({
 					<FormControl 
 						sx={{ m: 1, minWidth: 250 }}
 					>
-						<InputLabel>{x.name}</InputLabel>
+						<InputLabel
+							key={x.name}
+						>{x.name}
+						</InputLabel>
 						<Select
 							labelId="gift-exchange-label"
 							inputRef={select}

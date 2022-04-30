@@ -67,11 +67,10 @@ export const Stats = ({giftExchanges}) => {
 						<TableRow 
 							key={giftExchange.name}
 						>
-								<TableCell id={ giftExchange.picture !== true ? "picture-needed-table" : "" }>{giftExchange.name}</TableCell>
+								<TableCell id={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}</TableCell>
 								<TableCell>{giftExchange.date}</TableCell>
 								<TableCell>{giftExchange.giftExchange}</TableCell>
-								<TableCell></TableCell>
-							</TableRow>
+						</TableRow>
 						)};
 					</TableBody>
 				</Table>

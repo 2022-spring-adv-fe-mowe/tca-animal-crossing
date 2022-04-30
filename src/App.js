@@ -113,6 +113,16 @@ const App = () => {
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
+  const addNewVillager = (newVillagerToAdd) => {
+    console.log(newVillagerToAdd)
+    setGiftExchangesState(
+      [
+        ...giftExchangesState,
+        newVillagerToAdd
+      ]
+    );
+  };
+
   const email = "tsteele@madisoncollege.edu";
 
   const loadGameResults = async () => {
@@ -145,8 +155,6 @@ const App = () => {
   );
   };
 
-  
-
   return ( 
     <div className="App">
       <Routes>
@@ -164,7 +172,9 @@ const App = () => {
           />
         } />
         <Route path="addvillager" element={
-          <AddVillager/>
+          <AddVillager
+            addNewVillager = {addNewVillager}
+          />
         } />
       </Routes>
     </div>
