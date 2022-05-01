@@ -18,13 +18,9 @@ export const AddVillager = (
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`; 
 
 	const [newVillagerName, setNewVillagerName] = useState("");
-	// const [villagerToBeReplaced, setReplacedVillagerName] = useState("")
 
 	const submitNewVillager = () => {
-		newVillagerName !== "" 
-		// || villagerToBeReplaced !== "" 
-		?
-			
+		newVillagerName !== "" ?
 			addNewVillager({
 				name: newVillagerName,
 				giftExchange: "Villager added to island",
@@ -35,7 +31,7 @@ export const AddVillager = (
 			alert(newVillagerName + " has been added to your island. Welcome, " + newVillagerName + "!"),
 			nav ("/")
 			)
-		: alert('Please enter a name in both fields')
+		: alert('Please enter a name')
 	};
 
 	return(
@@ -54,19 +50,7 @@ export const AddVillager = (
 					value={newVillagerName}
 					onChange={(e) => setNewVillagerName(e.target.value)}
 				/>
-	{/* 			<h3>Villager Leaving Island</h3>
-				<TextField
-					sx={{
-						bgcolor: 'white',
-						mr: 2
-					}}
-					required
-					id="required-text-field"
-					label="Villager name"
-					value={villagerToBeReplaced}
-					onChange={(e) => setReplacedVillagerName(e.target.value)}
-				/> */}
-				<br />
+			<br />
 				<Button
 					sx={{
 						mt: 2,
