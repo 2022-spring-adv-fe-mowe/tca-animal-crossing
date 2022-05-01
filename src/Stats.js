@@ -6,6 +6,10 @@ export const Stats = ({giftExchanges}) => {
 
 	const nav = useNavigate();
 
+	const deactivateVillager = () => {
+		console.log("you hit the button");
+	};
+
 	console.log(giftExchanges);
 
 	//Shape data for display using .reduce (copied and pasted from Tom's code)
@@ -28,6 +32,7 @@ export const Stats = ({giftExchanges}) => {
 							, date: x.date > currentGiftExchangeForVillagerInMap.date ? x.date : currentGiftExchangeForVillagerInMap.date
 							, giftExchange: x.date > currentGiftExchangeForVillagerInMap.date ? x.giftExchange : currentGiftExchangeForVillagerInMap.giftExchange
 							, picture: x.date > currentGiftExchangeForVillagerInMap.date ? x.picture : currentGiftExchangeForVillagerInMap.picture
+							, active: x.date > currentGiftExchangeForVillagerInMap.date ? x.active : currentGiftExchangeForVillagerInMap.active
 						}
 
 						// If doesn't exist, add it.
@@ -36,6 +41,7 @@ export const Stats = ({giftExchanges}) => {
 							, date: x.date
 							, giftExchange: x.giftExchange
 							, picture: x.picture
+							, active: x.active
 						}
 				)
 
@@ -61,6 +67,7 @@ export const Stats = ({giftExchanges}) => {
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
+							<TableCell>Total Gifts Given</TableCell>
 							<TableCell>Deactivate Villager</TableCell>
 						</TableRow>
 					</TableHead>
@@ -69,10 +76,16 @@ export const Stats = ({giftExchanges}) => {
 						<TableRow 
 							key={giftExchange.name}
 						>
-								<TableCell id={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}</TableCell>
+								<TableCell id={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}{ giftExchange.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{giftExchange.date}</TableCell>
 								<TableCell>{giftExchange.giftExchange}</TableCell>
-								<TableCell><RemoveCircleOutlineIcon></RemoveCircleOutlineIcon></TableCell>
+								<TableCell></TableCell>
+								<TableCell>
+									<RemoveCircleOutlineIcon
+										onClick={deactivateVillager}
+									/>
+								
+								</TableCell>
 						</TableRow>
 						)};
 					</TableBody>

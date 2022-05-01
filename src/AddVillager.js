@@ -26,7 +26,7 @@ export const AddVillager = (
 			addNewVillager({
 				name: newVillagerName,
 				giftExchange: "Villager added to island",
-				date: date,
+				date: date, 
 				picture: false,
 				active: true
 			},
@@ -40,11 +40,13 @@ export const AddVillager = (
 		<>
 			<div className="addVillager">
 				<h1>Add Villager</h1>
-				<img src={villagerPicture} className="picture"/>
+				<img src={villagerPicture} className="picture"/><br />
 				<TextField
 					sx={{
 						bgcolor: 'white',
-						mr: 2
+						mr: 2,
+						width: '70vw',
+						borderColor: 'text.primary'
 					}}
 					required
 					id="required-text-field"

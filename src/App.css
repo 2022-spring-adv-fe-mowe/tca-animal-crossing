@@ -46,7 +46,7 @@
 
 .picture {
   display: inline;
-  width: 75vw;
+  width: 60vw;
   margin: 1em 0 1em -1em;
 }
 
@@ -85,4 +85,8 @@
 
 .play #pink {
   color: palevioletred !important;
+}
+
+#inactive-table {
+  color: rgb(189, 189, 189);
 }

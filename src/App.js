@@ -99,14 +99,76 @@ const hardcodedGiftExchanges = [
     giftExchange: "Unable to gift villager",
     picture: true, 
     active: true
-  }
+  },
+  {
+    name: "Ione",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true, 
+    active: true,
+    },
+  {
+    name: "Rodney",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true, 
+    active: true,
+  },
+  {
+    name: "Baabara",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true, 
+    active: true,
+  },
+  {
+    name: "Stinky",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true, 
+    active: true,
+  },
+  {
+    name: "Walker",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: false, 
+    active: true,
+  },
+  {
+    name: "Marlo",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: false, 
+    active: false
+  },
+  {
+    name: "Marshal",
+    date: "04/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true, 
+    active: true,
+  },
+  {
+    name: "Gruff",
+    date: "01/01/2022",
+    giftExchange: "Gift with gift in return",
+    picture: true,
+    active: false
+  },
+  {
+    name: "Cole",
+    date: "04/20/2022",
+    giftExchange: "Gift with gift in return",
+    picture: false,
+    active: true,
+  },
 ]
 /////////////END HARDCODED DATA//////////////
 //Determine active villagers
 const activeVillagers = villagers.filter(x => x.active === true);
 
 const App = () => {
-
   
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
@@ -118,7 +180,7 @@ const App = () => {
         newVillagerToAdd
       ],
     );
-    
+    console.log(villagers);
   };
 
   //Call function returned by useState() to update the state

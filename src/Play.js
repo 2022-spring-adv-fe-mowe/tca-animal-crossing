@@ -12,11 +12,9 @@ import { useState, useRef } from 'react';
 import React from 'react';
 
 export const Play = ({
-	villagers,
 	addNewGiftExchangesToState, 
+	giftExchanges
 }) => {
-
-	console.log(villagers);
 
 	const nav = useNavigate();
 	const select = React.useRef(null);
@@ -30,7 +28,7 @@ export const Play = ({
 	//It is not the gift exchange state. That state has been 'lifted'
 	//into the App.js
 	//
-  const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(villagers.map(x => ({
+  const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(giftExchanges.map(x => ({
 		name: x.name,
 		giftExchange: '',
 		picture: x.picture
@@ -43,7 +41,6 @@ export const Play = ({
 				giftExchange: x.name === villager.name ? newGiftExchange : x.giftExchange,
 			}))
 		);
-
 	};
 
 	//
@@ -66,12 +63,16 @@ export const Play = ({
 			{
 				...x, //A JS object with name and giftExchange properties
 				date: date,  //and add the date
-				picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture
+				picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture,
+				active: x.active
 			}
 		))); 
 
 		nav('/Stats');
 	};
+
+	//remove inactive villagers from Play functionality
+	const activeGiftExchanges = giftExchanges.filter(x => x.active === true)
 
 	return(
 		<>
@@ -80,12 +81,12 @@ export const Play = ({
 				<h2> {date} </h2>
 				<p><span id="pink">Pink border</span> indicates picture has not yet been recieved from villager</p>
 
-				{villagers.map(x => 
+				{activeGiftExchanges.map(x =>  
 					<FormControl 
 						sx={{ m: 1, minWidth: 250 }}
 						key={x.name}
 					>
-						<InputLabel>{x.name}	</InputLabel>
+						<InputLabel>{x.name}</InputLabel>
 						<Select
 							labelId="gift-exchange-label"
 							inputRef={select}
