@@ -1,4 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
 export const Stats = ({giftExchanges}) => {
@@ -60,6 +61,7 @@ export const Stats = ({giftExchanges}) => {
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
+							<TableCell>Deactivate Villager</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -70,6 +72,7 @@ export const Stats = ({giftExchanges}) => {
 								<TableCell id={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}</TableCell>
 								<TableCell>{giftExchange.date}</TableCell>
 								<TableCell>{giftExchange.giftExchange}</TableCell>
+								<TableCell><RemoveCircleOutlineIcon></RemoveCircleOutlineIcon></TableCell>
 						</TableRow>
 						)};
 					</TableBody>
