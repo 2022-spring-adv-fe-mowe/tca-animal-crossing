@@ -1,6 +1,8 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+import villagerPicture from './img/villagers.png';
+
 import './App.css';
 
 import { useState } from "react";
@@ -38,7 +40,7 @@ export const AddVillager = (
 		<>
 			<div className="addVillager">
 				<h1>Add Villager</h1>
-				<h3>New Villager</h3>
+				<img src={villagerPicture} className="picture"/>
 				<TextField
 					sx={{
 						bgcolor: 'white',
@@ -52,14 +54,7 @@ export const AddVillager = (
 				/>
 			<br />
 				<Button
-					sx={{
-						mt: 2,
-						mb: 2,
-						bgcolor: 'teal'
-					}}
-					variant="contained"
 					size="large"
-					color="secondary"
 					onClick={submitNewVillager}
 				>
 					Submit
@@ -70,7 +65,9 @@ export const AddVillager = (
 						onClick={() => nav('/')}
 					> Home
 					</Button>
+				<br />		
 			</div>
+			
 		</>
 	);
 };
