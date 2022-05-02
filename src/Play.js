@@ -31,7 +31,8 @@ export const Play = ({
   const [villagersGiftExchangeSelections, setVillagersGiftExchangeSelections] = useState(giftExchanges.map(x => ({
 		name: x.name,
 		giftExchange: '',
-		picture: x.picture
+		picture: x.picture,
+		active: x.active
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
