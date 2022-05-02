@@ -50,10 +50,9 @@ export const Stats = ({giftExchanges}) => {
 			, new Map()
 		)
 	].map(x => x[1]); 
+
 	// Spreading a Map into an array yields an array with two items, 
 	//the object we want is the second item... Tricky Woo for sure ! ! !
-
-	console.log("mostRecentGiftExchanges", mostRecentGiftExchanges);
 
 	return(
 		<>

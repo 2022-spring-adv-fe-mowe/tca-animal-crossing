@@ -72,8 +72,51 @@ export const Play = ({
 		nav('/Stats');
 	};
 
+	//remove duplicate names and pull data (such as active and picture status) 
+	//of the most recent gift exchange	
+
+	const mostRecentGiftExchanges = [
+		
+		// Group by name and only save the most recent gift exchange.
+		...giftExchanges.reduce(
+			(acc, x) => {
+				const currentGiftExchangeForVillagerInMap = acc.get(x.name);
+
+				acc.set(
+					x.name
+					, 
+						currentGiftExchangeForVillagerInMap
+
+						// If it already exists, update it only if a more
+						// recent gift exchange
+						? {
+							name: x.name
+							, date: x.date > currentGiftExchangeForVillagerInMap.date ? x.date : currentGiftExchangeForVillagerInMap.date
+							, giftExchange: x.date > currentGiftExchangeForVillagerInMap.date ? x.giftExchange : currentGiftExchangeForVillagerInMap.giftExchange
+							, picture: x.date > currentGiftExchangeForVillagerInMap.date ? x.picture : currentGiftExchangeForVillagerInMap.picture
+							, active: x.date > currentGiftExchangeForVillagerInMap.date ? x.active : currentGiftExchangeForVillagerInMap.active
+						}
+
+						// If doesn't exist, add it.
+						: {
+							name: x.name
+							, date: x.date
+							, giftExchange: x.giftExchange
+							, picture: x.picture
+							, active: x.active
+						}
+				)
+
+				return acc;
+			}
+			, new Map()
+		)
+	].map(x => x[1]); 
+
+
+	
 	//remove inactive villagers from Play functionality
-	const activeGiftExchanges = giftExchanges.filter(x => x.active === true)
+	const activeGiftExchanges = mostRecentGiftExchanges.filter(x => x.active === true);
 
 	return(
 		<>
