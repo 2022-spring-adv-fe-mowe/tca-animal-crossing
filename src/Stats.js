@@ -3,7 +3,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
 export const Stats = ({
-	giftExchanges, 
+	mostRecentGiftExchanges, 
 	updateVillagerActiveStatus
 }) => {
 
@@ -13,50 +13,6 @@ export const Stats = ({
 		villagerToDeactivate.active = false;
 		console.log(villagerToDeactivate);
 	};
-
-	console.log(giftExchanges);
-
-	//Shape data for display using .reduce (copied and pasted from Tom's code)
-	const mostRecentGiftExchanges = [
-		
-		// Group by name and only save the most recent gift exchange.
-		...giftExchanges.reduce(
-			(acc, x) => {
-				const currentGiftExchangeForVillagerInMap = acc.get(x.name);
-
-				acc.set(
-					x.name
-					, 
-						currentGiftExchangeForVillagerInMap
-
-						// If it already exists, update it only if a more
-						// recent gift exchange
-						? {
-							name: x.name
-							, date: x.date > currentGiftExchangeForVillagerInMap.date ? x.date : currentGiftExchangeForVillagerInMap.date
-							, giftExchange: x.date > currentGiftExchangeForVillagerInMap.date ? x.giftExchange : currentGiftExchangeForVillagerInMap.giftExchange
-							, picture: x.date > currentGiftExchangeForVillagerInMap.date ? x.picture : currentGiftExchangeForVillagerInMap.picture
-							, active: x.date > currentGiftExchangeForVillagerInMap.date ? x.active : currentGiftExchangeForVillagerInMap.active
-						}
-
-						// If doesn't exist, add it.
-						: {
-							name: x.name
-							, date: x.date
-							, giftExchange: x.giftExchange
-							, picture: x.picture
-							, active: x.active
-						}
-				)
-
-				return acc;
-			}
-			, new Map()
-		)
-	].map(x => x[1]); 
-
-	// Spreading a Map into an array yields an array with two items, 
-	//the object we want is the second item... Tricky Woo for sure ! ! !
 
 	return(
 		<>
