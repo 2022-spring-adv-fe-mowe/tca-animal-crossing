@@ -113,8 +113,6 @@ export const Play = ({
 		)
 	].map(x => x[1]); 
 
-
-	
 	//remove inactive villagers from Play functionality
 	const activeGiftExchanges = mostRecentGiftExchanges.filter(x => x.active === true);
 
