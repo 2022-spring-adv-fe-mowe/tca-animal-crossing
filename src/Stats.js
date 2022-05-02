@@ -1,17 +1,30 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, IconButton } from "@mui/material"
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
 export const Stats = ({
+	giftExchanges,
 	mostRecentGiftExchanges, 
 	updateVillagerActiveStatus
 }) => {
 
 	const nav = useNavigate();
 
-	const deactivateVillager = (villagerToDeactivate) => {
-		villagerToDeactivate.active = false;
-		console.log(villagerToDeactivate);
+	const currentDate = new Date();
+	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+
+
+
+	const handleClick = (giftExchange) => {
+		updateVillagerActiveStatus({
+				name: giftExchange.name,
+				giftExchange: 'Villager left the island',
+				date: date,
+				active: false,
+				picture: giftExchange.picture
+			},
+			nav ("/Stats")
+		);
 	};
 
 	return(
@@ -30,18 +43,21 @@ export const Stats = ({
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{mostRecentGiftExchanges.map(giftExchange => 
+						{mostRecentGiftExchanges.map(y => 
 						<TableRow 
-							key={giftExchange.name}
+							key={y.name}
 						>
-								<TableCell className={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}{ giftExchange.active !== true ? ' (inactive)' : ' '}</TableCell>
-								<TableCell>{giftExchange.date}</TableCell>
-								<TableCell>{giftExchange.giftExchange}</TableCell>
+								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
+								<TableCell>{y.date}</TableCell>
+								<TableCell>{y.giftExchange}</TableCell>
 								<TableCell></TableCell>
 								<TableCell>
-									<RemoveCircleOutlineIcon
-										onClick={() => deactivateVillager(giftExchange)}
-									/>
+									{y.active !== false ? 
+										<RemoveCircleOutlineIcon 
+											aria-label="inactivate villager"
+											value={y}
+											onClick={(e) => handleClick(y, e.target.value)}
+										/> : "" } 
 								</TableCell>
 						</TableRow>
 						)};

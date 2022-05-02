@@ -173,14 +173,13 @@ const App = () => {
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
-  const addNewVillager = (newVillagerToAdd) => {
+  const addNewEvent = (newEvent) => {
     setGiftExchangesState(
       [
         ...giftExchangesState,
-        newVillagerToAdd
+        newEvent
       ],
     );
-    console.log(villagers);
   };
 
   //Call function returned by useState() to update the state
@@ -193,10 +192,6 @@ const App = () => {
         ...newGiftExchangesToAdd //then add the new ones
       ]
     );
-  };
-
-  const updateVillagerActiveStatus = () => {
-    console.log("update villager active status function says hi")
   };
 
   	//Shape data for display using .reduce (copied and pasted from Tom's code)
@@ -251,7 +246,7 @@ const App = () => {
           <Stats 
             mostRecentGiftExchanges = {mostRecentGiftExchanges}
             giftExchanges = {giftExchangesState}
-            updateVillagerActiveStatus = {updateVillagerActiveStatus}
+            updateVillagerActiveStatus = {addNewEvent}
           />
         } />
         <Route path="play" element={
@@ -263,7 +258,7 @@ const App = () => {
         } />
         <Route path="addvillager" element={
           <AddVillager
-            addNewVillager = {addNewVillager}
+            addNewVillager = {addNewEvent}
           />
         } />
       </Routes>

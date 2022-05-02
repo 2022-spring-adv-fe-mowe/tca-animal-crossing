@@ -90,3 +90,7 @@
 #inactive-table {
   color: rgb(189, 189, 189);
 }
+
+.MuiSvgIcon-root:hover {
+  cursor: pointer;
+}
