@@ -6,8 +6,9 @@ export const Stats = ({giftExchanges}) => {
 
 	const nav = useNavigate();
 
-	const deactivateVillager = () => {
-		console.log("you hit the button");
+	const deactivateVillager = (villagerToDeactivate) => {
+		villagerToDeactivate.active = false;
+		console.log(villagerToDeactivate);
 	};
 
 	console.log(giftExchanges);
@@ -58,7 +59,6 @@ export const Stats = ({giftExchanges}) => {
 		<>
 		<div className="stats">
 			<h1>Stats</h1>
-
 			<TableContainer>
 				<Table>
 					<TableHead>
@@ -81,9 +81,8 @@ export const Stats = ({giftExchanges}) => {
 								<TableCell></TableCell>
 								<TableCell>
 									<RemoveCircleOutlineIcon
-										onClick={deactivateVillager}
+										onClick={() => deactivateVillager(giftExchange)}
 									/>
-								
 								</TableCell>
 						</TableRow>
 						)};
