@@ -70,11 +70,11 @@
   border: .15em solid #5adbc5;
 }
 
-#picture-needed {
+.picture-needed {
   border: .25em solid palevioletred !important;
 }
 
-#picture-needed-table {
+.picture-needed-table {
   font-weight: bolder;
   color: palevioletred !important;
 }

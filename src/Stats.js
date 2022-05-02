@@ -76,7 +76,7 @@ export const Stats = ({giftExchanges}) => {
 						<TableRow 
 							key={giftExchange.name}
 						>
-								<TableCell id={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}{ giftExchange.active !== true ? ' (inactive)' : ' '}</TableCell>
+								<TableCell className={ giftExchange.picture !== true ? 'picture-needed-table' : '' }>{giftExchange.name}{ giftExchange.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{giftExchange.date}</TableCell>
 								<TableCell>{giftExchange.giftExchange}</TableCell>
 								<TableCell></TableCell>

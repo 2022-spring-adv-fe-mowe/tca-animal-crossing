@@ -91,7 +91,7 @@ export const Play = ({
 						<Select
 							labelId="gift-exchange-label"
 							inputRef={select}
-							id={ x.picture !== true ? "picture-needed" : "gift-exchange" }
+							className={ x.picture !== true ? "picture-needed" : "gift-exchange" }
 							value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}	
 							label="Gift Exchange"
 							onChange={(e) => handleChange(x, e.target.value)}
