@@ -2,7 +2,10 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Butto
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
-export const Stats = ({giftExchanges}) => {
+export const Stats = ({
+	giftExchanges, 
+	updateVillagerActiveStatus
+}) => {
 
 	const nav = useNavigate();
 

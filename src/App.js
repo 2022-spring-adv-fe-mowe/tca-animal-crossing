@@ -1,4 +1,5 @@
 import './App.css';
+
 import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
@@ -193,7 +194,10 @@ const App = () => {
         ...newGiftExchangesToAdd //then add the new ones
       ]
     );
-    
+  };
+
+  const updateVillagerActiveStatus = () => {
+    console.log("update villager active status function says hi")
   };
 
   return ( 
@@ -203,6 +207,7 @@ const App = () => {
         <Route path="stats" element={
           <Stats 
             giftExchanges = {giftExchangesState}
+            updateVillagerActiveStatus = {updateVillagerActiveStatus}
           />
         } />
         <Route path="play" element={
