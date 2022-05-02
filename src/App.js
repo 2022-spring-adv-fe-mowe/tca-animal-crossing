@@ -12,71 +12,6 @@ import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
-const villagers = [
-/////////////START HARDCODED DATA//////////////
-  {
-    name: "Ione",
-    picture: true, 
-    active: true,
-    },
-  {
-    name: "Rodney",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Baabara",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Stinky",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Shino",
-    picture: false, 
-    active: true,
-  },
-  {
-    name: "Walker",
-    picture: false, 
-    active: true,
-  },
-  {
-    name: "Marlo",
-    picture: false, 
-    active: false
-  },
-  {
-    name: "Marshal",
-    picture: true, 
-    active: true,
-    
-  },
-  {
-    name: "Octavian",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Skye",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Gruff",
-    picture: true,
-    active: false
-  },
-  {
-    name: "Cole",
-    picture: false,
-    active: true,
-  },
-]
-
 //Used to initialize the state
 const hardcodedGiftExchanges = [
   {
@@ -166,7 +101,6 @@ const hardcodedGiftExchanges = [
   },
 ]
 /////////////END HARDCODED DATA//////////////
-//Determine active villagers
 
 const App = () => {
   
@@ -193,6 +127,8 @@ const App = () => {
       ]
     );
   };
+
+  //Calculate the number of gift exchanges per villager
 
   	//Shape data for display using .reduce (copied and pasted from Tom's code)
 	const mostRecentGiftExchanges = [
@@ -235,8 +171,6 @@ const App = () => {
 
 	// Spreading a Map into an array yields an array with two items, 
 	//the object we want is the second item... Tricky Woo for sure ! ! !
-
-  //Determine active gift exchanges?
 
   return ( 
     <div className="App">
