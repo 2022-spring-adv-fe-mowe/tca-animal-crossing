@@ -12,7 +12,7 @@ import { useState, useRef } from 'react';
 import React from 'react';
 
 export const Play = ({
-	addNewGiftExchangesToState, 
+	addNewGiftExchanges, 
 	giftExchanges,
 	mostRecentGiftExchanges
 }) => {
@@ -60,7 +60,7 @@ export const Play = ({
 		console.log("giftExchangeSelectionsMade", giftExchangeSelectionsMade);
 
 		//Add each selection made to the lifted state.
-		addNewGiftExchangesToState(giftExchangeSelectionsMade.map(x => (
+		addNewGiftExchanges(giftExchangeSelectionsMade.map(x => (
 		
 			{
 				...x, //A JS object with name and giftExchange properties

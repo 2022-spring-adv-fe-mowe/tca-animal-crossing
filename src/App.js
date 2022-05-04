@@ -4,7 +4,7 @@ import localforage from 'localforage';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 
 import { Play } from './Play';
@@ -12,131 +12,55 @@ import { Home } from './Home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
-//Used to initialize the state
-const hardcodedGiftExchanges = [
-  {
-    name: "Shino",
-    date: "04/01/2022",
-    giftExchange: 
-      "Gift with gift in return",
-    picture: false,
-    active: true
-  },
-  {
-    name: "Octavian",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true,
-    active: true
-  },
-  { 
-    name: "Skye",
-    date: "04/04/2022",
-    giftExchange: "Unable to gift villager",
-    picture: true, 
-    active: true
-  },
-  {
-    name: "Ione",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true, 
-    active: true,
-    },
-  {
-    name: "Rodney",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Baabara",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Stinky",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Walker",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: false, 
-    active: true,
-  },
-  {
-    name: "Marlo",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: false, 
-    active: false
-  },
-  {
-    name: "Marshal",
-    date: "04/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true, 
-    active: true,
-  },
-  {
-    name: "Gruff",
-    date: "01/01/2022",
-    giftExchange: "Gift with gift in return",
-    picture: true,
-    active: false
-  },
-  {
-    name: "Cole",
-    date: "04/20/2022",
-    giftExchange: "Gift with gift in return",
-    picture: false,
-    active: true,
-  },
-]
-/////////////END HARDCODED DATA//////////////
-
 const App = () => {
   
   //The lifted state. App will control it, and pass it and functions that change it to other components
-  const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
+  const [villagerEvents, setVillagerEvents] = useState([]);
 
-  
+  const loadVillagerEvents = async () => {
+    setVillagerEvents(await localforage.getItem("villagerEvent") ?? [] );
+  };
+
+  useEffect(
+    () => {
+      loadVillagerEvents();
+    }
+    , []
+  );
   //This function adds new villagers and updates active status
-  const addNewEvent = (newEvent) => {
-    setGiftExchangesState(
+  const addNewEvent = async (villagerEvent) => {
+    
+    const newEventToAdd =
       [
-        ...giftExchangesState,
-        newEvent
-      ],
-    );
+        ...villagerEvents,
+        villagerEvent
+      ];
+
+      setVillagerEvents(newEventToAdd);
+
+      await localforage.setItem("villagerEvent", newEventToAdd);
   };
 
   //Call function returned by useState() to update the state
-  const addNewGiftExchangesToState = (newGiftExchangesToAdd) => {
+  const addNewGiftExchanges = async (newGiftExchanges) => {
+
+    const newGiftExchangesToAdd =
+      [
+        ...villagerEvents, //Spread in existing gift exchanges
+        ...newGiftExchanges //then add the new ones
+      ];
 
     //Call the function we got back from useState() to update the state
-    setGiftExchangesState(
-      [
-        ...giftExchangesState, //Spread in existing gift exchanges
-        ...newGiftExchangesToAdd //then add the new ones
-      ]
-    );
-  };
+    setVillagerEvents(newGiftExchangesToAdd);
 
-  //Calculate the number of gift exchanges per villager
+    await localforage.setItem("villagerEvent", newGiftExchangesToAdd);
+  }; 
 
   	//Shape data for display using .reduce (copied and pasted from Tom's code)
 	const mostRecentGiftExchanges = [
 		
 		// Group by name and only save the most recent gift exchange.
-		...giftExchangesState.reduce(
+		...villagerEvents.reduce(
 			(acc, x) => {
 				const currentGiftExchangeForVillagerInMap = acc.get(x.name);
 
@@ -181,15 +105,15 @@ const App = () => {
         <Route path="stats" element={
           <Stats 
             mostRecentGiftExchanges = {mostRecentGiftExchanges}
-            giftExchanges = {giftExchangesState}
+            giftExchanges = {villagerEvents}
             updateVillagerActiveStatus = {addNewEvent}
           />
         } />
         <Route path="play" element={
           <Play
-            giftExchanges = {giftExchangesState}
+            giftExchanges = {villagerEvents}
             mostRecentGiftExchanges = {mostRecentGiftExchanges}
-            addNewGiftExchangesToState = {addNewGiftExchangesToState}
+            addNewGiftExchanges = {addNewGiftExchanges}
           />
         } />
         <Route path="addvillager" element={

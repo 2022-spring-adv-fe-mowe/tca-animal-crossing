@@ -15,13 +15,13 @@ export const Stats = ({
 	/*******************************************************/
 //attempts to count number of gifts by villager
 
-	const filterGiftInteractions = (arr, query) => {
+/* 	const filterGiftInteractions = (arr, query) => {
 		return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
 	};
 
 	const numberOfGiftExchanges = giftExchanges.map(x => x.giftExchange).includes(filterGiftInteractions(giftExchanges.map(z => z.giftExchange), 'with'));
 
-	console.log(numberOfGiftExchanges);
+	console.log(numberOfGiftExchanges); */
 
 
 	/*******************************************************/
