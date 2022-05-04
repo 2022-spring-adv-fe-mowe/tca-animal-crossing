@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, IconButton } from "@mui/material"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
@@ -8,12 +8,28 @@ export const Stats = ({
 	updateVillagerActiveStatus
 }) => {
 
+	console.log(giftExchanges);
+
+		/*******************************************************/
+	/*******************************************************/
+	/*******************************************************/
+//attempts to count number of gifts by villager
+
+	const filterGiftInteractions = (arr, query) => {
+		return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+	};
+
+	const numberOfGiftExchanges = giftExchanges.map(x => x.giftExchange).includes(filterGiftInteractions(giftExchanges.map(z => z.giftExchange), 'with'));
+
+	console.log(numberOfGiftExchanges);
+
+
+	/*******************************************************/
+
 	const nav = useNavigate();
 
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
-
-
 
 	const handleClick = (giftExchange) => {
 		updateVillagerActiveStatus({

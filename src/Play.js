@@ -85,14 +85,17 @@ export const Play = ({
 
 				{activeGiftExchanges.map(x =>  
 					<FormControl 
-						sx={{ m: 1, minWidth: 250 }}
+						sx={{ 
+							m: 1, 
+							minWidth: 250 
+						}}
 						key={x.name}
 					>
 						<InputLabel>{x.name}</InputLabel>
 						<Select
 							labelId="gift-exchange-label"
 							inputRef={select}
-							className={ x.picture !== true ? "picture-needed" : "gift-exchange" }
+							className={x.picture !== true ? "picture-needed" : "gift-exchange"} 
 							value={villagersGiftExchangeSelections.filter(y => y.name === x).giftExchange}	
 							label="Gift Exchange"
 							onChange={(e) => handleChange(x, e.target.value)}

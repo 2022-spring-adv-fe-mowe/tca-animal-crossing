@@ -107,6 +107,8 @@ const App = () => {
   //The lifted state. App will control it, and pass it and functions that change it to other components
   const [giftExchangesState, setGiftExchangesState] = useState(hardcodedGiftExchanges);
 
+  
+  //This function adds new villagers and updates active status
   const addNewEvent = (newEvent) => {
     setGiftExchangesState(
       [
