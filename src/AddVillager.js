@@ -18,6 +18,7 @@ export const AddVillager = (
 
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`; 
+	//const date = `${currentDate.getMonth()+1}/${1}/${currentDate.getFullYear()}`;
 
 	const [newVillagerName, setNewVillagerName] = useState("");
 
@@ -28,10 +29,11 @@ export const AddVillager = (
 				giftExchange: "Villager added to island",
 				date: date, 
 				picture: false,
-				active: true
+				active: true,
+				giftsGot: 0
 			},
-			alert(newVillagerName + " has been added to your island. Welcome, " + newVillagerName + "!"),
-			nav ("/")
+			//alert(newVillagerName + " has been added to your island. Welcome, " + newVillagerName + "!"),
+			//nav ("/")
 			)
 		: alert('Please enter a name')
 	};

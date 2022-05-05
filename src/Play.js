@@ -33,7 +33,8 @@ export const Play = ({
 		name: x.name,
 		giftExchange: '',
 		picture: x.picture,
-		active: x.active
+		active: x.active,
+		giftsGot: x.giftsGot
 	})));
 	
 	const handleChange = (villager, newGiftExchange) => {
@@ -66,7 +67,8 @@ export const Play = ({
 				...x, //A JS object with name and giftExchange properties
 				date: date,  //and add the date
 				picture: x.giftExchange === "Gift with villager picture in return" ? true : x.picture,
-				active: x.active
+				active: x.active,
+				giftsGot: x.giftExchange !== "Unable to gift villager" ? 1 : 0
 			}
 		))); 
 
