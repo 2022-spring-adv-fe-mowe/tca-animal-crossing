@@ -74,7 +74,3 @@ export const AddVillager = (
 		</>
 	);
 };
-
-//Once the user adds a new villager, 
-//a pop-up should appear asking the user
-//which villager left/is leaving

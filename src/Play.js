@@ -18,7 +18,7 @@ export const Play = ({
 }) => {
 
 	const nav = useNavigate();
-	const select = React.useRef(null);
+	const select = useRef(null);
 
 	//Generate today's date
 	const currentDate = new Date();
