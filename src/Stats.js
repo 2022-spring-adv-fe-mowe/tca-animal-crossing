@@ -13,20 +13,6 @@ export const Stats = ({
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
-	
-		const giftExchangesWhereGiftsWereGot = giftExchanges
-		.filter(x => x.giftsGot === 1)
-
-		console.log(giftExchangesWhereGiftsWereGot)
-
-		const totalGiftsGot = 
-			giftExchangesWhereGiftsWereGot.map(x => x.name)
-
-		const foobar = totalGiftsGot.forEach(element)
-
-	
-		console.log(foobar)
-
 	const handleClick = (villagerEvent) => {
 		updateVillagerActiveStatus({
 				name: villagerEvent.name,
@@ -50,7 +36,6 @@ export const Stats = ({
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
-							<TableCell>Total Gifts Given</TableCell>
 							<TableCell>Deactivate Villager</TableCell>
 						</TableRow>
 					</TableHead>
@@ -62,7 +47,6 @@ export const Stats = ({
 								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{y.date}</TableCell>
 								<TableCell>{y.giftExchange}</TableCell>
-								<TableCell>{y.totalGiftsGot}</TableCell>
 								<TableCell>
 									{y.active !== false ? 
 										<RemoveCircleOutlineIcon 

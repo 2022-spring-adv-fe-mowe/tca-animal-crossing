@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9183271f.css",
+    "main.js": "/static/js/main.06261dc1.js",
+    "static/js/787.cfdc64a4.chunk.js": "/static/js/787.cfdc64a4.chunk.js",
+    "static/media/background.png": "/static/media/background.2118f011c85bfee6ee78.png",
+    "static/media/villagers.png": "/static/media/villagers.8b559704abcbeb1cc431.png",
+    "static/media/acnh logo.png": "/static/media/acnh logo.2b3e50aef9dd29cb36a1.png",
+    "index.html": "/index.html",
+    "main.9183271f.css.map": "/static/css/main.9183271f.css.map",
+    "main.06261dc1.js.map": "/static/js/main.06261dc1.js.map",
+    "787.cfdc64a4.chunk.js.map": "/static/js/787.cfdc64a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9183271f.css",
+    "static/js/main.06261dc1.js"
+  ]
+}
