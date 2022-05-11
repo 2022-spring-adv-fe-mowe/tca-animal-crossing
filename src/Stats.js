@@ -2,6 +2,8 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Butto
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from "react-router-dom";
 
+
+
 export const Stats = ({
 	giftExchanges,
 	mostRecentGiftExchanges, 
@@ -12,6 +14,45 @@ export const Stats = ({
 
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+
+	
+	
+	const exchangesWithGiftsGot = giftExchanges.filter(x => 
+		x.giftsGot === 1); 
+	
+	console.log("exchangesWithGiftsGot: ", exchangesWithGiftsGot);
+	
+	const giftsGotInstances = exchangesWithGiftsGot.map(y => y.name);
+
+	console.log(giftsGotInstances)
+
+	const totalNumberOfGifts = giftsGotInstances.reduce((accumulator, value) => {
+		return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+	}, []);
+
+	console.log(totalNumberOfGifts);
+
+	const groupedByPlayer = (exchangesWithGiftsGot) => {
+    exchangesWithGiftsGot.reduce(
+        (acc, x) => {
+
+					///Here's where I get mixed up...
+
+					
+            return acc;
+        }
+        , new Map<string, acc>
+    )
+	};
+ 
+
+	
+
+
+	
+	
+
+	/************************************************* */
 
 	const handleClick = (villagerEvent) => {
 		updateVillagerActiveStatus({
@@ -36,6 +77,7 @@ export const Stats = ({
 							<TableCell>Villager Name</TableCell>
 							<TableCell>Last Gift Exchange Date</TableCell>
 							<TableCell>Last Gift Exchange Result</TableCell>
+							<TableCell>Total Gifts Received</TableCell>
 							<TableCell>Deactivate Villager</TableCell>
 						</TableRow>
 					</TableHead>
@@ -47,6 +89,7 @@ export const Stats = ({
 								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{y.date}</TableCell>
 								<TableCell>{y.giftExchange}</TableCell>
+								<TableCell>{}</TableCell>
 								<TableCell>
 									{y.active !== false ? 
 										<RemoveCircleOutlineIcon 
@@ -66,6 +109,7 @@ export const Stats = ({
 				size="large"
 				onClick={() => nav('/')}
 			> Home </Button>
+			)
 		</div>
 		</>
 	);
