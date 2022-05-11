@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 
 import { Play } from './Play';
-import { Home } from './Home';
+import { Home } from './home';
 import { Stats } from './Stats';
 import { AddVillager } from './AddVillager';
 
