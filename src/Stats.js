@@ -32,25 +32,53 @@ export const Stats = ({
 
 	console.log(totalNumberOfGifts);
 
-	const groupedByPlayer = (exchangesWithGiftsGot) => {
-    exchangesWithGiftsGot.reduce(
+	// No need to make this a lambda func, rather we'll just
+	// reduce into a const named groupedByPlayer.
+	const groupedByPlayer = giftExchanges.reduce(
         (acc, x) => {
+			
+			// The accumulator is going to be villager name
+			// mapped to giftsgot count. So we will always
+			// add the current villager to the Map() object,
+			// and change what it is mapped too.
+			acc.set(
+				// The key will always be the villager name
+				x.name 
+				
+				// And now the value...
+				, acc.get(x.name)
 
-					///Here's where I get mixed up...
+					// If it is already in the map, add 1 to the count if it is
+					// another giftsgot, or just add it with the same value, kind of gross here,
+					// but should work...
+					? x.giftsGot === 1 ? acc.get(x.name) + 1 : acc.get(x.name)
 
-					
+					// Otherwise, it's the first villager, so initialize to zero or
+					// 1 if giftsgot
+					: x.giftsGot === 1 ? 1 : 0
+			);
+
             return acc;
         }
-        , new Map<string, acc>
-    )
-	};
- 
 
-	
+		// JS, not TS, so can't have types specified in angle brackets. Rather
+		// have to "know/remember" what's in the Map.
+        , new Map()
+    );
 
+	// Let's check if we got it right... But it's a map,
+	// so we'll spread it into an array of arrays...
+	console.log([...groupedByPlayer]);
 
-	
-	
+	// We can also map the array of arrays to an array of
+	// objects that will be easy to output in JSX...
+	const villagersWithGiftCount = [...groupedByPlayer].map(x => ({
+		name: x[0] 
+		, giftCount: x[1]
+	}));
+
+	console.log(villagersWithGiftCount);
+
 
 	/************************************************* */
 
@@ -89,7 +117,7 @@ export const Stats = ({
 								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{y.date}</TableCell>
 								<TableCell>{y.giftExchange}</TableCell>
-								<TableCell>{}</TableCell>
+								<TableCell>{villagersWithGiftCount.map(g => g.name === y.name ?? g.giftCount)}</TableCell>
 								<TableCell>
 									{y.active !== false ? 
 										<RemoveCircleOutlineIcon 
