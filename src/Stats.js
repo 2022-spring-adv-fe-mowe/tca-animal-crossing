@@ -14,16 +14,12 @@ export const Stats = ({
 
 	const currentDate = new Date();
 	const date = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
-
-	
 	
 	const exchangesWithGiftsGot = giftExchanges.filter(x => 
 		x.giftsGot === 1); 
 	
-	console.log("exchangesWithGiftsGot: ", exchangesWithGiftsGot);
-	
 	const giftsGotInstances = exchangesWithGiftsGot.map(y => y.name);
-
+	
 	console.log(giftsGotInstances)
 
 	const totalNumberOfGifts = giftsGotInstances.reduce((accumulator, value) => {
@@ -68,7 +64,7 @@ export const Stats = ({
 
 	// Let's check if we got it right... But it's a map,
 	// so we'll spread it into an array of arrays...
-	console.log([...groupedByPlayer]);
+	//console.log([...groupedByPlayer]);
 
 	// We can also map the array of arrays to an array of
 	// objects that will be easy to output in JSX...
@@ -79,8 +75,14 @@ export const Stats = ({
 
 	console.log(villagersWithGiftCount);
 
+	const _ = require('lodash');
+	const villagerInfoWithGiftCount = _.merge(villagersWithGiftCount, mostRecentGiftExchanges)
 
-	/************************************************* */
+	console.log(villagerInfoWithGiftCount)
+
+
+
+	/**************************************************/
 
 	const handleClick = (villagerEvent) => {
 		updateVillagerActiveStatus({
@@ -110,14 +112,14 @@ export const Stats = ({
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{mostRecentGiftExchanges.map(y => 
+						{villagerInfoWithGiftCount.map(y => 
 						<TableRow 
 							key={y.name}
 						>
 								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{y.date}</TableCell>
 								<TableCell>{y.giftExchange}</TableCell>
-								<TableCell>{villagersWithGiftCount.map(g => g.name === y.name ?? g.giftCount)}</TableCell>
+								<TableCell>{y.giftCount}</TableCell>
 								<TableCell>
 									{y.active !== false ? 
 										<RemoveCircleOutlineIcon 
