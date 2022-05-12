@@ -117,7 +117,7 @@ export const Stats = ({
 								<TableCell className={ y.picture !== true ? 'picture-needed-table' : '' }>{y.name}{ y.active !== true ? ' (inactive)' : ' '}</TableCell>
 								<TableCell>{y.date}</TableCell>
 								<TableCell>{y.giftExchange}</TableCell>
-								<TableCell>{}</TableCell>
+								<TableCell>{villagersWithGiftCount.map(g => g.name === y.name ?? g.giftCount)}</TableCell>
 								<TableCell>
 									{y.active !== false ? 
 										<RemoveCircleOutlineIcon 
